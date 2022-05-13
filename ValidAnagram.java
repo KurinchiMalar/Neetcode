@@ -21,6 +21,12 @@ Constraints:
 s and t consist of lowercase English letters.
 
  */
+//My solution
+/*Time Complexity : O(m+n)
+        m - length of string s ;  n - length of string t
+        Space Complexity : O(n)
+https://leetcode.com/problems/valid-anagram/
+ */
 import java.util.*;
 class ValidAnagram {
     public boolean isAnagram(String s, String t) {

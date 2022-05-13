@@ -35,9 +35,11 @@ class ContainsDuplicate {
     }
 }
 
-// Neetcode Solution using HashSet..you can avoid maintaining count
-// Time Complexity : O(n)
-// Space Complexity : O(n)
+/*Neetcode Solution using HashSet..you can avoid maintaining count
+ Time Complexity : O(n)
+  Space Complexity : O(n)
+  https://leetcode.com/problems/contains-duplicate/
+ */
 /*import java.util.*;
 class Solution {
     public boolean containsDuplicate(int[] nums) {
