@@ -69,17 +69,18 @@ class ValidAnagram {
     }*/
        // More Readable.
     public boolean isAnagram(String s, String t) {
-
+        int sourceLen = s.length();
         if(s == null || t == null){
             return false;
         }
-        if(s.length() != t.length()){
+        if(sourceLen != t.length()){
             return false;
         }
 
         HashMap<Character,Integer> hmap = new HashMap<>();
         // for all strings with s, t of same length
-        for(int i=0; i < s.length() ; i++){
+
+        for(int i=0; i < sourceLen ; i++){
             hmap.put(s.charAt(i),hmap.getOrDefault(s.charAt(i),0)+1);
             hmap.put(t.charAt(i),hmap.getOrDefault(t.charAt(i),0)-1);
         }
@@ -91,4 +92,5 @@ class ValidAnagram {
         }
         return true;
     }
+}
 }
