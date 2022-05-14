@@ -28,8 +28,14 @@ s and t consist of lowercase English letters.
 https://leetcode.com/problems/valid-anagram/
  */
 import java.util.*;
+
+/* Time Complexity : O(m+n)
+     m - length of string s ;
+     n - length of string t
+   Space Complexity : O(n)
+*/
 class ValidAnagram {
-    public boolean isAnagram(String s, String t) {
+    /*public boolean isAnagram(String s, String t) {
 
         if(s == null || t == null){
             return false;
@@ -60,6 +66,30 @@ class ValidAnagram {
             return true;
         }
         return false;
-    }
-}
+    }*/
+       // More Readable.
+        public boolean isAnagram(String s, String t) {
+
+            if(s == null || t == null){
+                return false;
+            }
+
+            HashMap<Character,Integer> hmap = new HashMap<>();
+            for(int i=0,j=0; i < s.length() ; i++,j++){
+                if(t.charAt(j) == (s.charAt(i))){
+                    //hmap.compute(ch, (k, v) -> (v == null) ? 0 : v + 1);
+                    hmap.put(s.charAt(i),hmap.getOrDefault(s.charAt(i),0)+2);
+                }else{
+                    hmap.put(s.charAt(i),hmap.getOrDefault(s.charAt(i),0)+1);
+                    hmap.put(t.charAt(j),hmap.getOrDefault(t.charAt(j),0)+1);
+                }
+            }
+
+            for(Character ch:hmap.keySet()){
+                if(hmap.get(ch) % 2 != 0){
+                    return false;
+                }
+            }
+            return true;
+        }
 }
