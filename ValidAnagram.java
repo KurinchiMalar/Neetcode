@@ -68,28 +68,27 @@ class ValidAnagram {
         return false;
     }*/
        // More Readable.
-        public boolean isAnagram(String s, String t) {
+    public boolean isAnagram(String s, String t) {
 
-            if(s == null || t == null){
+        if(s == null || t == null){
+            return false;
+        }
+        if(s.length() != t.length()){
+            return false;
+        }
+
+        HashMap<Character,Integer> hmap = new HashMap<>();
+        // for all strings with s, t of same length
+        for(int i=0; i < s.length() ; i++){
+            hmap.put(s.charAt(i),hmap.getOrDefault(s.charAt(i),0)+1);
+            hmap.put(t.charAt(i),hmap.getOrDefault(t.charAt(i),0)-1);
+        }
+
+        for(Character ch:hmap.keySet()){
+            if(hmap.get(ch) != 0){
                 return false;
             }
-
-            HashMap<Character,Integer> hmap = new HashMap<>();
-            for(int i=0,j=0; i < s.length() ; i++,j++){
-                if(t.charAt(j) == (s.charAt(i))){
-                    //hmap.compute(ch, (k, v) -> (v == null) ? 0 : v + 1);
-                    hmap.put(s.charAt(i),hmap.getOrDefault(s.charAt(i),0)+2);
-                }else{
-                    hmap.put(s.charAt(i),hmap.getOrDefault(s.charAt(i),0)+1);
-                    hmap.put(t.charAt(j),hmap.getOrDefault(t.charAt(j),0)+1);
-                }
-            }
-
-            for(Character ch:hmap.keySet()){
-                if(hmap.get(ch) % 2 != 0){
-                    return false;
-                }
-            }
-            return true;
         }
+        return true;
+    }
 }
