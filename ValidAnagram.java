@@ -33,6 +33,12 @@ import java.util.*;
      m - length of string s ;
      n - length of string t
    Space Complexity : O(n)
+   https://leetcode.com/problems/valid-anagram/submissions/
+
+   Without additional space if we have to do then sort the strings and check if both are equal.
+   However time complexity increases in this case.
+   Time : O(nlogn) / O(n2) depends upon sort algo
+   Space : O(n) / O(1) depends upon sort algo
 */
 class ValidAnagram {
     /*public boolean isAnagram(String s, String t) {
@@ -67,30 +73,40 @@ class ValidAnagram {
         }
         return false;
     }*/
-       // More Readable.
-    public boolean isAnagram(String s, String t) {
+    // More Readable.
+    public static boolean isAnagram(String s, String t) {
         int sourceLen = s.length();
-        if(s == null || t == null){
+        if (s == null || t == null) {
             return false;
         }
-        if(sourceLen != t.length()){
+        if (sourceLen != t.length()) {
             return false;
         }
 
-        HashMap<Character,Integer> hmap = new HashMap<>();
+        HashMap<Character, Integer> hmap = new HashMap<>();
         // for all strings with s, t of same length
 
-        for(int i=0; i < sourceLen ; i++){
-            hmap.put(s.charAt(i),hmap.getOrDefault(s.charAt(i),0)+1);
-            hmap.put(t.charAt(i),hmap.getOrDefault(t.charAt(i),0)-1);
+        for (int i = 0; i < sourceLen; i++) {
+            hmap.put(s.charAt(i), hmap.getOrDefault(s.charAt(i), 0) + 1);
+            hmap.put(t.charAt(i), hmap.getOrDefault(t.charAt(i), 0) - 1);
         }
 
-        for(Character ch:hmap.keySet()){
-            if(hmap.get(ch) != 0){
+        for (Character ch : hmap.keySet()) {
+            if (hmap.get(ch) != 0) {
                 return false;
             }
         }
         return true;
     }
-}
+
+
+    public static void main(String[] args) {
+        System.out.println("cat,rat :" + isAnagram("cat", "rat"));
+        System.out.println("aa,bb :" + isAnagram("aa", "bb"));
+        System.out.println("aba,baa :" + isAnagram("aba", "baa"));
+        System.out.println("anagram,gramana :" + isAnagram("anagram", "gramana"));
+        System.out.println("aa,aaaaa :" + isAnagram("aa", "aaaaa"));
+
+
+    }
 }

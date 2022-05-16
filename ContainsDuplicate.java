@@ -13,12 +13,14 @@ Constraints:
 1 <= nums.length <= 105
 -109 <= nums[i] <= 109
  */
-// Mysolution
-// Time Complexity : O(n)
-// Space Complexity : O(n)
+/*
+Time Complexity : O(n)
+Space Complexity : O(n)
+https://leetcode.com/problems/contains-duplicate/ */
+
 import java.util.*;
 class ContainsDuplicate {
-    public boolean containsDuplicate(int[] nums) {
+    public boolean containsDuplicateWithCount(int[] nums) {
         if(nums.length == 0){
             return false;
         }
@@ -33,16 +35,8 @@ class ContainsDuplicate {
         }
         return false;
     }
-}
-
-/*Neetcode Solution using HashSet..you can avoid maintaining count
- Time Complexity : O(n)
-  Space Complexity : O(n)
-  https://leetcode.com/problems/contains-duplicate/
- */
-/*import java.util.*;
-class Solution {
-    public boolean containsDuplicate(int[] nums) {
+    //Neetcode Solution using HashSet..you can avoid maintaining count
+    public static boolean containsDuplicateUsingHashSet(int[] nums) {
         if(nums.length == 0){
             return false;
         }
@@ -59,5 +53,12 @@ class Solution {
         }
         return false;
     }
-}*/
+    public static void main(String[] args){
+        System.out.println("1,2,1 :"+containsDuplicateUsingHashSet(new int[]{1,2,1}));
+        System.out.println("1,2 :"+containsDuplicateUsingHashSet(new int[]{1,2}));
+        System.out.println("1,2,3,1 :"+containsDuplicateUsingHashSet(new int[]{1,2,3,1}));
+
+    }
+}
+
 
