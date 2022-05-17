@@ -33,7 +33,7 @@ import java.util.*;
 /*
 https://leetcode.com/problems/two-sum/submissions/
 Time :O(nlogn)+O(n/2) = O(nlogn)
-Space : O(n) // sorting + indicesMap
+Space : O(n) // sorting +indicesMap
  */
 class TwoSum {
     public static int[] twoSum(int[] nums, int target) {
