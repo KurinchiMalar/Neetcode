@@ -70,19 +70,15 @@ class TwoSum {
 
         for(int i=0; i < nums.length; i++){
             int diff = target-nums[i];
-            if(indicesMap.containsKey(nums[i]) && (diff ==nums[i])){ // if target = sum of same numbers target =6 (3,3); target = 12 (6,6) etc.
-                return new int[]{i,indicesMap.get(nums[i])};
-            }
-            indicesMap.put(nums[i],i);
-            if(indicesMap.containsKey(diff) && indicesMap.get(diff) != i){
+            if(indicesMap.containsKey(diff)){
                 return new int[]{i,indicesMap.get(diff)};
             }
+            indicesMap.put(nums[i],i);
         }
         return null;
     }
 
     public static void main(String[] args){
-        // fails for this test case because hashmap does not allow duplicate keys.
         int[] result = twoSumAcceptedSolution(new int[]{3,3},6);
         for(int res:result){
             System.out.println(res);
