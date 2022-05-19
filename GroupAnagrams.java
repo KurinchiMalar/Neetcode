@@ -86,7 +86,8 @@ class GroupAnagrams {
         return resultList;
     }
     /*
-    TimeComplexity : O(n)
+    TimeComplexity : O(m*n*26) = O(m*n)
+         where m - # of total strings, n = average length of each string , 26 freqAr length.
     SpaceComplexity :O(n)
            worst case when there are no anagram pairs...
            all strings will have corresponding  keys in map.
