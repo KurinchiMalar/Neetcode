@@ -31,9 +31,10 @@ Only one valid answer exists.
  */
 import java.util.*;
 /*
-https://leetcode.com/problems/two-sum/submissions/
 Time :O(nlogn)+O(n/2) = O(nlogn)
 Space : O(n) // sorting +indicesMap
+https://leetcode.com/problems/two-sum/submissions/
+https://github.com/KurinchiMalar/Neetcode/blob/Arrays/TwoSum.java
  */
 class TwoSum {
     public static int[] twoSum(int[] nums, int target) {

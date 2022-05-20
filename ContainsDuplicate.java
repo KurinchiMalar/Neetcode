@@ -16,7 +16,10 @@ Constraints:
 /*
 Time Complexity : O(n)
 Space Complexity : O(n)
-https://leetcode.com/problems/contains-duplicate/ */
+https://leetcode.com/problems/contains-duplicate/submissions/
+https://github.com/KurinchiMalar/Neetcode/blob/Arrays/ContainsDuplicate.java
+ */
+
 
 import java.util.*;
 class ContainsDuplicate {

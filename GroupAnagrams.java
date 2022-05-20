@@ -91,6 +91,9 @@ class GroupAnagrams {
     SpaceComplexity :O(n)
            worst case when there are no anagram pairs...
            all strings will have corresponding  keys in map.
+
+      https://leetcode.com/problems/group-anagrams/submissions/
+      https://github.com/KurinchiMalar/Neetcode/blob/Arrays/GroupAnagrams.java
      */
     public static List<List<String>> groupAnagramsEfficient(String[] strs) {
         if(strs==null || strs.length==0){

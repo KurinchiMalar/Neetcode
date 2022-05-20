@@ -33,12 +33,16 @@ import java.util.*;
      m - length of string s ;
      n - length of string t
    Space Complexity : O(n)
-   https://leetcode.com/problems/valid-anagram/submissions/
+
 
    Without additional space if we have to do then sort the strings and check if both are equal.
    However time complexity increases in this case.
    Time : O(nlogn) / O(n2) depends upon sort algo
    Space : O(n) / O(1) depends upon sort algo
+
+   https://leetcode.com/problems/valid-anagram/submissions/
+   https://github.com/KurinchiMalar/Neetcode/blob/Arrays/ValidAnagram.java
+
 */
 class ValidAnagram {
     /*public boolean isAnagram(String s, String t) {
@@ -98,15 +102,32 @@ class ValidAnagram {
         }
         return true;
     }
+    public static boolean isValidAnagramAsciiSum(String s, String t){
+        if(s==null || t==null){
+            return false;
+        }
+        int sourceSum = 0;
+        int targetSum = 0;
+        for(Character ch:s.toCharArray()){
+            sourceSum += ch;
+        }
+        for(Character ch:t.toCharArray()){
+            targetSum += ch;
+        }
+        if(sourceSum == targetSum){
+            return true;
+        }
+        return false;
+    }
 
 
     public static void main(String[] args) {
-        System.out.println("cat,rat :" + isAnagram("cat", "rat"));
+        /*System.out.println("cat,rat :" + isAnagram("cat", "rat"));
         System.out.println("aa,bb :" + isAnagram("aa", "bb"));
         System.out.println("aba,baa :" + isAnagram("aba", "baa"));
         System.out.println("anagram,gramana :" + isAnagram("anagram", "gramana"));
-        System.out.println("aa,aaaaa :" + isAnagram("aa", "aaaaa"));
-
-
+        System.out.println("aa,aaaaa :" + isAnagram("aa", "aaaaa"));*/
+        System.out.println("duh,ill :" + isAnagram("duh", "ill"));
+        System.out.println("duh,ill :" + isValidAnagramAsciiSum("duh", "ill"));
     }
 }
