@@ -23,7 +23,8 @@ It is guaranteed that the answer is unique.
 Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
  */
 /*
-	Time Complexity :O(n)+O(k) // input parse + k times parse on freq hash map
+	Time Complexity :O(n)+O(nlogn) (for sorting) + O(k)  = O(nlogn)
+	// input parse + sort +  k times parse on freq hash map
 	Space Complexity :O(n) // worst case no repeated elements
 	https://leetcode.com/problems/top-k-frequent-elements/submissions/
 	https://github.com/KurinchiMalar/Neetcode/blob/Arrays/TopKFrequentElements.java
