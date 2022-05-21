@@ -25,6 +25,8 @@ Follow up: Your algorithm's time complexity must be better than O(n log n), wher
 /*
 	Time Complexity :O(n)+O(k) // input parse + k times parse on freq hash map
 	Space Complexity :O(n) // worst case no repeated elements
+	https://leetcode.com/problems/top-k-frequent-elements/submissions/
+	https://github.com/KurinchiMalar/Neetcode/blob/Arrays/TopKFrequentElements.java
  */
 import java.util.*;
 import static java.util.stream.Collectors.*;
