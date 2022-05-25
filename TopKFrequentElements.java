@@ -106,14 +106,63 @@ class TopKFrequentElements {
         //resultAr = (int[])ArrayList.toArray(resultList);
         return resultAr;
     }
+    /*
+	Time Complexity :O(n)
+	// Maintaining array of : count index {arraylist of keys}
+	Space Complexity :O(n)
+	https://leetcode.com/problems/top-k-frequent-elements/submissions/
+	https://github.com/KurinchiMalar/Neetcode/blob/Arrays/TopKFrequentElements.java
+ */
+    public static int[] topKFrequentEfficient(int[] nums, int k) {
+        if(nums==null || nums.length==0){
+            return new int[0];
+        }
+        if(nums.length==1){
+            return new int[]{nums[0]};
+        }
+        HashMap<Integer,Integer> numsFrequencyMap = new HashMap<>();
+        for(int num:nums){
+            numsFrequencyMap.put(num,numsFrequencyMap.getOrDefault(num,0)+1);
+        }
+        /*for(Entry entry:numsFrequencyMap.entrySet()){
+            System.out.println("key: "+entry.getKey()+" value: "+entry.getValue());
+        }*/
+        int maxFreqPossible = nums.length+1;
+        ArrayList<Integer>[] freqIndexedAr = new ArrayList[maxFreqPossible];
+        // initialize empty arraylist for all the indexes.
+        for(int i=0; i < maxFreqPossible; i++){
+            freqIndexedAr[i] = new ArrayList<Integer>();
+        }
+
+        for(Entry entry:numsFrequencyMap.entrySet()){
+            int currentFreq = (int)entry.getValue();
+            freqIndexedAr[currentFreq].add((int)entry.getKey());
+        }
+        ArrayList<Integer> resultList = new ArrayList<>();
+        for(int j=maxFreqPossible-1; j > 0; j--){
+            ArrayList<Integer> listForCurrentFrequency = freqIndexedAr[j];
+            if(!listForCurrentFrequency.isEmpty()){
+                for(int i=0;i<listForCurrentFrequency.size();i++){
+                    resultList.add(listForCurrentFrequency.get(i));
+                    if(resultList.size() == k){
+                        return resultList.stream().mapToInt(e -> e).toArray();
+                    }
+                }
+            }
+        }
+        return resultList.stream().mapToInt(e -> e).toArray();
+    }
+
     public static void main(String[] args){
         //System.out.println(""+Arrays.toString(topKFrequentNlognNaive(new int[]{1,1,1,2,2,3},2)));// Expected Output: [1,2]
         //System.out.println(""+Arrays.toString(topKFrequentNlognNaive(new int[]{1},1)));// Expected Output: [1]
-        System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1,1,1,2,2,3},2)));// Expected Output: [1,2]
+        //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1,1,1,2,2,3},2)));// Expected Output: [1,2]
         //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1},1)));// Expected Output: [1]
         //System.out.println(""+Arrays.toString(topKFrequentNlognNaive(new int[]{1,2},2)));// Expected Output: [1,2]
-        System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1,2},2)));// Expected Output: [1,2]
+        //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1,2},2)));// Expected Output: [1,2]
         //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{4,1,-1,2,-1,2,3},2)));// Expected Output: [1,2]
-
+        System.out.println(""+Arrays.toString(topKFrequentEfficient(new int[]{1,1,1,2,2,3},2)));// Expected Output: [1,2]
+        System.out.println(""+Arrays.toString(topKFrequentEfficient(new int[]{1},1)));// Expected Output: [1]
+        System.out.println(""+Arrays.toString(topKFrequentEfficient(new int[]{1,2},2)));// Expec
     }
 }
