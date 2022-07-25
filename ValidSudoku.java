@@ -1,45 +1,23 @@
+
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+/*
+Time Complexity : O(n*n)
+Space Complexity : O(n)
+https://leetcode.com/problems/valid-sudoku/submissions/
+https://github.com/KurinchiMalar/Neetcode/blob/Arrays/ValidSudoku.java
+ */
 class ValidSudoku {
-    public static boolean containsDuplicates(Set<Character> recordHashSet,char input){
-
-        Set<Character> hset = recordHashSet;
-        if(input != '.' && hset.contains(input)){
-            return true;
-        }
-        hset.add(input);
-        return false;
-    }
     public static boolean isValidSudoku(char[][] board) {
-        Set<Character> recordHashSet = new HashSet<>();
-        int cornerIndex = 0;
-        while (cornerIndex < 9){
-            //row check
-            for(int i = 0; i < 9 ; i++){
-                if(containsDuplicates(recordHashSet,board[i][cornerIndex])){
-                    return false;
-                }
-            }
-            recordHashSet.clear();
-            //column check
-            for(int j=0; j < 9 ; j++){
-                if(containsDuplicates(recordHashSet,board[cornerIndex][j])){
-                    return false;
-                }
-            }
-            recordHashSet.clear();
-            System.out.println(cornerIndex);
-            cornerIndex++;
-        }
-
-        System.out.println("rowcolumnclear");
-        //3*3 check
-        for(int i=0; i < 9 ; i=i+3){
-            for(int j=0; j < 9 ; j++){
-                if(containsDuplicates(recordHashSet,board[i][j])){
-                    return false;
+        HashSet<String> set = new HashSet<>();
+        for(int i=0; i < 9;i++) {
+            for(int j=0; j < 9; j++) {
+                if(board[i][j] !='.'){
+                    char number = board[i][j];
+                    if(!set.add(number+"inrow"+i) ||
+                        !set.add(number+"incolumn"+j) ||
+                        !set.add(number+"inblock"+i/3+"-"+j/3)){
+                        return false;
+                    }
                 }
             }
         }
