@@ -61,9 +61,35 @@ public class LongestConsecutiveSequence {
         }
         return maxSeqLen;
     }
+    public static int longestConsecutiveMoreReadableSolution(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+
+        for(int num:nums){
+            set.add(num);
+        }
+        int maxLength = 0;
+        for(int i=0;i<nums.length;i++){
+            int num = nums[i];
+            int count = 1;
+            //see left
+            while(set.contains(--num)){
+                count++;
+                set.remove(num);
+            }
+            //see right
+            while(set.contains(num++)){
+                count++;
+                set.remove(num);
+            }
+            maxLength = Math.max(count,maxLength);
+        }
+        return maxLength;
+    }
     public static void main(String[] args){
         int[] nums = {0,-1};
         System.out.println("Longest Consecutive Sequence length is : "+ longestConsecutive(nums));
+        System.out.println("Longest Consecutive Sequence length is : "+ longestConsecutiveMoreReadableSolution(nums));
+
     }
 }
 
