@@ -31,10 +31,10 @@ public class LongestConsecutiveSequence {
     Space Complexity : O(n)
      */
     public static int longestConsecutive(int[] nums) {
-        HashMap<Integer,Integer> map = new HashMap<>();
+        HashMap<Integer,Boolean> map = new HashMap<>();
 
         for(int num:nums){
-            map.put(num,0);
+            map.put(num,false);
         }
         int maxSeqLen = 1;
         int sourceArLen = nums.length;
@@ -45,12 +45,17 @@ public class LongestConsecutiveSequence {
             return 1;
         }
         for(int i=0; i < sourceArLen; i++){
+            // Without this marking say [1,2,3,4] we will be doing O(n*n). solution already found at 1 but we will be repeating.
+            if(map.containsKey(nums[i]) && map.get(nums[i])){ // already traversed
+                continue;
+            }
             int curSeqLen = 1;
             for(int iter=1; iter < sourceArLen; iter++){
                 if(!map.containsKey(nums[i]+iter)){
                     break;
                 }
                 curSeqLen++;
+                map.put(nums[i]+iter,true); // traversed as part of a sequence.
             }
             maxSeqLen = curSeqLen > maxSeqLen ? curSeqLen:maxSeqLen;
         }
