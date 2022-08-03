@@ -50,9 +50,6 @@ class ContainerWithMaxWater {
         int tail = height.length-1;
         while(head < tail){
             int curArea = (tail-head)*Math.min(height[head],height[tail]);
-            if(curArea > maxArea){
-                maxArea = curArea;
-            }
             if(height[head] < height[tail]){
                 head++;
             }else{
