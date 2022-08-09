@@ -28,7 +28,7 @@ s consists of English letters, digits, symbols and spaces.
  */
 /*
 https://leetcode.com/problems/longest-substring-without-repeating-characters/submissions/
-Time Complexity : O(n+n) = O(n)
+Time Complexity : O(n*n)
 worst case : "bbbbbbbbb"
 Best case when there is no repetition at all:  eg) "abcdef"
 Space Complextiy : O(n)
@@ -71,12 +71,45 @@ public class LengthOfLongestSubstringWithoutRepetition {
         }
         return maxSubLen;
     }
-    public static void main(String[] args){
-        System.out.println(lengthOfLongestSubstring("au"));
-        System.out.println(lengthOfLongestSubstring("bbbbb"));
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
-        System.out.println(lengthOfLongestSubstring("dvdf"));
-        System.out.println(lengthOfLongestSubstring("pwwkew"));
+    /*
+Time Complexity : O(n)
+worst case : "bbbbbbbbb"
+Best case when there is no repetition at all:  eg) "abcdef"
+Space Complextiy : O(n)
+     */
+    public static int lengthOfLongestSubstringUsingSetEfficient(String s) {
 
+        HashSet<Character> set = new HashSet<>();
+        int maxSubLen=0;
+        if(s==null){
+            return 0;
+        }
+        int sLen = s.length();
+        if(sLen == 0){
+            return 0;
+        }
+        if(sLen == 1){
+            return 1;
+        }
+
+        for(int left=0,right=0; left < sLen && right < sLen; ){
+            while(set.contains(s.charAt(right))){
+                set.remove(s.charAt(left));
+                left++;
+            }
+            set.add(s.charAt(right));
+            maxSubLen = Integer.max(maxSubLen,right-left+1);
+            right++;
+        }
+        return maxSubLen;
+    }
+
+        public static void main(String[] args){
+        //System.out.println(lengthOfLongestSubstring("au"));
+        //System.out.println(lengthOfLongestSubstring("bbbbb"));
+        //System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        //System.out.println(lengthOfLongestSubstring("dvdf"));
+        System.out.println(lengthOfLongestSubstring("pwwkew"));
+        System.out.println(lengthOfLongestSubstringUsingSetEfficient("pwwkew"));
     }
 }
