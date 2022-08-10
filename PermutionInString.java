@@ -34,23 +34,25 @@ class PermutionInString {
         }
     }
     public static boolean checkInclusion(String s1, String s2) {
-        int s1Len = s1.length();
-        int s2Len = s2.length();
+        int m = s1.length();
+        int n = s2.length();
         HashMap<Character,Integer> s1Map = new HashMap<>();
         populateMap(s1,s1Map);
-        // take a copy
+        // take a shallow copy
         HashMap<Character,Integer> map = new HashMap<>();
         map.putAll(s1Map);
-        for(int l=0,r=0; l < s2Len && r < s2Len; ){
-            r=s1Len+l-1; //
-            while(r >= l && r < s2Len){
-                if(map.containsKey(s2.charAt(r))){
-                    int curFreq = map.get(s2.charAt(r));
-                    map.put(s2.charAt(r),curFreq-1);
-                    if(curFreq-1 == 0){
-                        map.remove(s2.charAt(r));
+        for(int left=0,right=0; left < n && right < n; ){
+            // left to right window size should always be equal to m.
+            right=m+left-1;
+
+            while(right >= left && right < n){
+                if(map.containsKey(s2.charAt(right))){
+                    // reduce the frequency in the copy map denoting that we have seen the char in current window.
+                    map.put(s2.charAt(right), map.get(s2.charAt(right))-1);
+                    if( map.get(s2.charAt(right)) == 0){
+                        map.remove(s2.charAt(right));
                     }
-                    r--;
+                    right--;
                 }
                 else{
                     break;
@@ -59,7 +61,8 @@ class PermutionInString {
             if(map.isEmpty()){
                 return true;
             }
-            l++;
+            // Adjust window and reinitalize map.
+            left++;
             map.clear();
             map.putAll(s1Map);
         }
