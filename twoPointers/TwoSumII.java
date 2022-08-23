@@ -1,5 +1,7 @@
 package twoPointers;
 
+import java.util.Arrays;
+
 /*
 167. Two Sum II - Input Array Is Sorted
 Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
@@ -44,7 +46,7 @@ TC : O(n)
 SC : O(1)
  */
 public class TwoSumII {
-    public int[] twoSum(int[] numbers, int target) {
+    public static int[] twoSum(int[] numbers, int target) {
         int nLength = numbers.length;
         int head = 0;
         int tail = nLength-1;
@@ -55,17 +57,22 @@ public class TwoSumII {
                 // return IntStream.of(head+1,tail+1).toArray();  ------- java8
                 return new int[]{head+1,tail+1};
             }
-            if(curSum < target){
+            else if(curSum < target){
                 head++;
                 continue;
             }
-            if(curSum > target){
+            else{
                 tail--;
                 continue;
             }
-            head++;
-            tail--;
+
         }
         return new int[]{};
+    }
+    public static void main(String[] args){
+        System.out.println(Arrays.toString(twoSum(new int[]{2,7,11,15},9)));
+        System.out.println(Arrays.toString(twoSum(new int[]{2,3,4},6)));
+        System.out.println(Arrays.toString(twoSum(new int[]{-1,0},-1)));
+
     }
 }

@@ -46,7 +46,7 @@ public class ProductExceptSelf {
         leftProduct[0] = 1;
         rightProduct[0] = 1;
         int j = sourceLen-2; // one before last element
-        for(int i=1; i < sourceLen; i++){
+        for(int i=1; i < sourceLen && j >= 0; i++){
             leftProduct[i] = leftProduct[i-1] * nums[i-1];
             rightProduct[i] = rightProduct[i-1] * nums[j+1];
             j--;
