@@ -2,6 +2,7 @@ package stacks;
 /*
 TC : O(1)
 SC : O(n) // n nodes in list created.
+https://leetcode.com/problems/min-stack/submissions/
  */
 class Node{
     int val;
