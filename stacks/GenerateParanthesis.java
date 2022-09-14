@@ -23,7 +23,7 @@ Constraints:
 1 <= n <= 8
  */
 /*
-TC: O(2 pow n)
+TC: O(2 pow n) ... 2 branches one for open and one for close. height of tree n ...hence total tc 2 pow n
 SC : O(n)
  */
 public class GenerateParanthesis {
