@@ -46,12 +46,13 @@ public class KokoEatingBananas {
         int left = 1 ;
         int right = Arrays.stream(piles).max().getAsInt();
         int result = Integer.MAX_VALUE;
-        int hours = 0;
         while(left <= right){
-            int k = (left + right) / 2;
+            //int k = (left + right) / 2; Use shift operator for faster computation
+            int k = left + ((right-left)>>1); // k = left + ( (right - left)/2 ) ; (2left + right - left) / 2 ; (left+right)/2
             // compute the hours taken to eat at the rate of k bananas.
+            int hours = 0;
+
             for(int val:piles){
-                //hours += Math.ceil(val/k);
                 hours += val/k;
                 if(val % k != 0){  // for cases like 3/6 , 7/6
                     hours++;
