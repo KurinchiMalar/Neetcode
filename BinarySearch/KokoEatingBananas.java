@@ -50,10 +50,10 @@ public class KokoEatingBananas {
             //int k = (left + right) / 2; Use shift operator for faster computation
             int k = left + ((right-left)>>1); // k = left + ( (right - left)/2 ) ; (2left + right - left) / 2 ; (left+right)/2
             // compute the hours taken to eat at the rate of k bananas.
-            int hours = 0;
+            long hours = 0;
 
             for(int val:piles){
-                hours += val/k;
+                hours += (long) val/(long)k;
                 if(val % k != 0){  // for cases like 3/6 , 7/6
                     hours++;
                 }
