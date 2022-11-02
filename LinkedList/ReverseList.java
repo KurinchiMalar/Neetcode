@@ -6,6 +6,18 @@ class ListNode {
      ListNode() {}
      ListNode(int val) { this.val = val; }
      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    public  static ListNode createNode(int data){
+        return new ListNode(data,null);
+    }
+
+    public static void printList(ListNode head){
+        ListNode temp = head;
+        while (temp != null){
+            System.out.print(temp.val+"->");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
  }
 public class ReverseList {
     /*
@@ -46,27 +58,17 @@ public class ReverseList {
         }
         return prev;
     }
-    public static ListNode createNode(int data){
-        return new ListNode(data,null);
-    }
-    public static void printList(ListNode head){
-        ListNode temp = head;
-        while (temp != null){
-            System.out.print(temp.val+"->");
-            temp = temp.next;
-        }
-        System.out.println();
-    }
+
     public static void main(String[] args){
-        ListNode head = createNode(1);
-        head.next = createNode(2);
-        head.next.next = createNode(3);
-        head.next.next.next = createNode(4);
-        head.next.next.next.next = createNode(5);
-        printList(head);
+        ListNode head = ListNode.createNode(1);
+        head.next = ListNode.createNode(2);
+        head.next.next = ListNode.createNode(3);
+        head.next.next.next = ListNode.createNode(4);
+        head.next.next.next.next = ListNode.createNode(5);
+        ListNode.printList(head);
         //head = reverseListIterative(head);
         head = reverseListRecursive(head);
-        printList(head);
+        ListNode.printList(head);
 
     }
 
