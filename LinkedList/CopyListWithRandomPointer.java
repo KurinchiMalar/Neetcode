@@ -98,7 +98,7 @@ public class CopyListWithRandomPointer {
         }
 
         current = head;
-        //
+        // assign next and random pointers for the copy nodes.
         while(current != null){
             Node copy = oldToCopyMap.get(current);
             copy.next = oldToCopyMap.get(current.next);
