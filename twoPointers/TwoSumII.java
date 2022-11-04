@@ -59,13 +59,10 @@ public class TwoSumII {
             }
             else if(curSum < target){
                 head++;
-                continue;
             }
             else{
                 tail--;
-                continue;
             }
-
         }
         return new int[]{};
     }

@@ -29,6 +29,8 @@ piles.length <= h <= 109
 /*
 Time Complexity : O(log(max(p)) * p)     Brute force where we need to compute hours for every value of k from 1 to max(pile).= O(max(p) * p)
 Space Complexity : O(1)
+https://leetcode.com/problems/koko-eating-bananas/
+
  */
 package BinarySearch;
 import java.util.Arrays;

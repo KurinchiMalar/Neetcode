@@ -25,6 +25,7 @@ The number of nodes in the list is sz.
 /*
 TC : O(n)
 SC : O(1)
+https://leetcode.com/problems/remove-nth-node-from-end-of-list/
  */
 package LinkedList;
 

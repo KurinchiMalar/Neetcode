@@ -25,6 +25,7 @@ Constraints:
 /*
 TC: O(2 pow n) ... 2 branches one for open and one for close. height of tree n ...hence total tc 2 pow n
 SC : O(n)
+https://leetcode.com/problems/generate-parentheses/
  */
 public class GenerateParanthesis {
     public static void generateParanthesis(int n){

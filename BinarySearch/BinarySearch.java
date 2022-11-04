@@ -28,6 +28,7 @@ nums is sorted in ascending order.
 /*
 TC : O(logn)
 SC : O(logn) for stack recursive approach , O(1) for iterative approach
+https://leetcode.com/problems/binary-search/
  */
 public class BinarySearch {
     public static int search(int[] nums, int target) {
