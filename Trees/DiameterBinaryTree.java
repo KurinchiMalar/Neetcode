@@ -28,8 +28,8 @@ SC : O(1)
 package Trees;
 
 public class DiameterBinaryTree {
-    int maxDiaSoFar = Integer.MIN_VALUE;
-    public int diameterOfBinaryTree(TreeNode root) {
+    static int maxDiaSoFar = Integer.MIN_VALUE;
+    public static int longestDiameterOfBinaryTreeFromAnyNode(TreeNode root) {
 
         if(root == null){
             return 0;
@@ -37,8 +37,41 @@ public class DiameterBinaryTree {
         int lheight = TreeNode.getHeight(root.left);
         int rheight = TreeNode.getHeight(root.right);
         maxDiaSoFar = Integer.max(maxDiaSoFar ,(lheight + rheight));
-        diameterOfBinaryTree(root.left);
-        diameterOfBinaryTree(root.right);
+        longestDiameterOfBinaryTreeFromAnyNode(root.left);
+        longestDiameterOfBinaryTreeFromAnyNode(root.right);
         return maxDiaSoFar;
+    }
+    public static int longestDiameterOfBinaryTreeFromRoot(TreeNode root) {
+
+        if(root == null || TreeNode.isLeaf(root)){
+            return 0;
+        }
+        int lheight = TreeNode.getHeight(root.left);
+        int rheight = TreeNode.getHeight(root.right);
+        longestDiameterOfBinaryTreeFromRoot(root.left);
+        longestDiameterOfBinaryTreeFromRoot(root.right);
+        return 1+lheight+rheight;
+    }
+
+    public static void main(String[] args){
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(5);
+
+        TreeNode root1 = new TreeNode(1);
+        root1.left = new TreeNode(2);
+
+        System.out.println("From Any node");
+        System.out.println(longestDiameterOfBinaryTreeFromAnyNode(root));
+
+        maxDiaSoFar = Integer.MIN_VALUE; // reinitialize for re-using the maxDiasoFar class variable.
+        System.out.println(longestDiameterOfBinaryTreeFromAnyNode(root1));
+        System.out.println("From Root");
+        System.out.println(longestDiameterOfBinaryTreeFromRoot(root));
+        System.out.println(longestDiameterOfBinaryTreeFromRoot(root1));
+
+
     }
 }
