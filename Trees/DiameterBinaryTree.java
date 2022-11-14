@@ -41,6 +41,25 @@ public class DiameterBinaryTree {
         longestDiameterOfBinaryTreeFromAnyNode(root.right);
         return maxDiaSoFar;
     }
+    /*
+    While finding height itself can we find diameter?
+    TC : O(n)
+    SC : O(1)
+     */
+    public static int longestDiameterOfBinaryTreeFromAnyNodeOptimized(TreeNode root){
+        DFS(root);
+        return maxDiaSoFar;
+    }
+
+    public static int DFS(TreeNode root){
+        if(root == null){
+            return 0;
+        }
+        int lheight = DFS(root.left);
+        int rheight = DFS(root.right);
+        maxDiaSoFar = Integer.max(maxDiaSoFar ,(lheight + rheight));
+        return 1+Integer.max(lheight,rheight);
+    }
     public static int longestDiameterOfBinaryTreeFromRoot(TreeNode root) {
 
         if(root == null || TreeNode.isLeaf(root)){
@@ -71,6 +90,12 @@ public class DiameterBinaryTree {
         System.out.println("From Root");
         System.out.println(longestDiameterOfBinaryTreeFromRoot(root));
         System.out.println(longestDiameterOfBinaryTreeFromRoot(root1));
+
+        maxDiaSoFar = Integer.MIN_VALUE; // reinitialize for re-using the maxDiasoFar class variable.
+        System.out.println("From Any node");
+        System.out.println(longestDiameterOfBinaryTreeFromAnyNodeOptimized(root));
+        maxDiaSoFar = Integer.MIN_VALUE; // reinitialize for re-using the maxDiasoFar class variable.
+        System.out.println(longestDiameterOfBinaryTreeFromAnyNodeOptimized(root1));
 
 
     }

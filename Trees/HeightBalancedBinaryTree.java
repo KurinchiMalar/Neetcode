@@ -44,6 +44,28 @@ public class HeightBalancedBinaryTree {
         isHeightBalanced(root.right);
         return isHeightBalanced;
     }
+
+    /*
+    While finding height itself can we check height balanced condition ??
+    TC : O(n)
+    SC : O(1)
+     */
+    public static boolean isIsHeightBalancedOptimized(TreeNode root){
+        DFS(root);
+        return isHeightBalanced;
+
+    }
+    public static int DFS(TreeNode root){
+        if(root == null){
+            return 0;
+        }
+        int lheight = DFS(root.left);
+        int rheight = DFS(root.right);
+        if(Math.abs(lheight - rheight) > 1){
+            isHeightBalanced = false;
+        }
+        return 1+Integer.max(lheight,rheight);
+    }
     public static void main(String[] args){
         TreeNode root = new TreeNode(3);
         root.left = new TreeNode(9);
@@ -59,5 +81,10 @@ public class HeightBalancedBinaryTree {
         root1.left.left.left = new TreeNode(4);
         root1.left.left.right= new TreeNode(4);
         System.out.println(isHeightBalanced(root1));
+        isHeightBalanced = true; // reinitialize
+        System.out.println(isIsHeightBalancedOptimized(root));
+        isHeightBalanced = true; // reinitialize
+        System.out.println(isIsHeightBalancedOptimized(root1));
+
     }
 }
