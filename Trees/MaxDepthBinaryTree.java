@@ -20,7 +20,7 @@ The number of nodes in the tree is in the range [0, 104].
 /*
 https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
 TC : O(h) where h is the height of the tree... worstcase n , a 1-ary tree with n nodes.
-SC : O(1)
+SC : O(n)
  */
 package Trees;
 

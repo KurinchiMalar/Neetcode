@@ -23,7 +23,7 @@ The number of nodes in the tree is in the range [1, 104].
  */
 /*
 TC: O(n * n)  - O(n) for every node to find height then for n nodes = n * n
-SC : O(1)
+SC : O(n) - recursive stack
  */
 package Trees;
 

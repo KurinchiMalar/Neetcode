@@ -24,7 +24,7 @@ The number of nodes in the tree is in the range [0, 5000].
  */
 /*
 TC : O(n * n)
-SC : O(1)
+SC : O(n)
  */
 package Trees;
 
