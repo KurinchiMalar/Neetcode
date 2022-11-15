@@ -45,7 +45,7 @@ class TreeNode {
     //https://www.youtube.com/watch?v=lXIk1PXb1Jc
     public static void printLevelOrder(TreeNode root){
         int level = getHeight(root);
-        for(int i=0 ; i <= level ; i++){
+        for(int i=1 ; i <= level ; i++){
             printCurrentLevel(root,i);
         }
         System.out.println();
