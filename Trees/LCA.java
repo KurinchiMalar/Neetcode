@@ -27,7 +27,7 @@ p and q will exist in the BST.
  */
 /*
 TC : O(n)
-SC : O(1)
+SC : O(n)
  */
 package Trees;
 
