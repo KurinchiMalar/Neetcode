@@ -1,0 +1,44 @@
+
+
+1. n nodes - maximum level possible = n/2
+2. The maximum number of nodes at level ‘l’ of a binary tree is 2pow(l). (if the level of the root is zero.)
+3. The Maximum number of nodes in a binary tree of height ‘h’ is 2pow(h) – 1. (assume height of a leaf node is one.)
+4. In a Binary Tree with N nodes, minimum possible height or the minimum number of levels is Log (N+1).  ....
+                                                                                                 2              (base2)
+
+N <=  2h - 1
+2h >= N+1
+log2(2h) >= log2(N+1)           (Taking log both sides)
+hlog22 >= log2(N+1)       (h is an integer)
+h  >= | log2(N+1) |
+So the minimum height possible is | log2(N+1) |
+https://www.geeksforgeeks.org/properties-of-binary-tree/#:~:text=A%20tree%20has%20maximum%20nodes,series%20is%202h%E2%80%93%201.
+
+5. The minimum height of a binary tree having n nodes :  Log (n).  ....
+                                                            2              (base2)
+
+6. The maximum height of a binary tree having n nodes:  n
+7.  A binary tree of n nodes has (n+1) null references.
+8.  When each node of a binary tree has one or two children, the number of leaf nodes (nodes with no children) is one more than the number of nodes that have two children.
+9.  A Binary Tree with L leaves has at least | Log2L |+ 1   levels.
+
+
+
+Full Binary Tree
+A binary tree is said to be a full binary tree when each internal node has zero or two children
+
+Perfect Binary Tree
+A perfect binary tree is a special type of binary tree in which all the leaf nodes are at the same level, and each internal node has two children:
+
+ Complete Binary Tree
+A binary tree is referred to as a complete binary tree when all of its levels are completely filled. The only exception is possibly the lowest level in which the nodes must lean as left as possible:
+
+Degenerate or Pathological Tree
+A degenerate or pathological tree is a type of binary tree in which each internal node has a single child, either the left child or the right child
+
+Skewed Binary Tree
+A binary tree is said to be a skewed binary tree if all of its internal nodes have exactly one child, and either left children or right children dominate the tree. In particular, there exist two types of skewed binary trees: left-skewed binary tree and the right-skewed binary tree:
+
+ Balanced Binary Tree
+A balanced binary tree is also a special type of binary tree in which the difference of height between the left and the right subtrees for each node is at most one:
+
