@@ -39,10 +39,10 @@ package Trees;
 
 public class ValidBST {
 
-    public boolean isValidBST(TreeNode root){
+    public static boolean isValidBST(TreeNode root){
         return isValidBSTUtil(root,Long.MIN_VALUE,Long.MAX_VALUE);
     }
-    public boolean isValidBSTUtil(TreeNode root,long min,long max) {
+    public static boolean isValidBSTUtil(TreeNode root,long min,long max) {
 
         if(root == null) return true;
 
@@ -51,6 +51,25 @@ public class ValidBST {
 
         return isValidBSTUtil(root.left,min,root.val) &&
                 isValidBSTUtil(root.right,root.val,max);
+    }
+    public static void main(String[] args){
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(6);
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(4);
+        root.left.left.left = new TreeNode(1);
+        System.out.println(isValidBST(root));
+
+        TreeNode root1 = new TreeNode(2);
+        root1.left = new TreeNode(2);
+        System.out.println(isValidBST(root1));
+
+        TreeNode root2 = new TreeNode(3);
+        root2.right = new TreeNode(3);
+        System.out.println(isValidBST(root2));
+
+
     }
 }
 
