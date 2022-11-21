@@ -27,6 +27,7 @@ The number of nodes in the binary tree is in the range [1, 10^5].
 Each node's value is between [-10^4, 10^4].
  */
 /*
+https://leetcode.com/problems/count-good-nodes-in-binary-tree/
 TC : O(n)
 SC : O(h)  ... h will be log n for a complete binary tree, n for a 1-ary tree.
  */

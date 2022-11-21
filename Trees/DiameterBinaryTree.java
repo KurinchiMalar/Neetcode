@@ -22,6 +22,7 @@ The number of nodes in the tree is in the range [1, 104].
 
  */
 /*
+https://leetcode.com/problems/diameter-of-binary-tree/
 TC: O(n * n)  - O(n) for every node to find height then for n nodes = n * n
 SC : O(n) - recursive stack
  */

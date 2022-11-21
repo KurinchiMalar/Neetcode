@@ -20,7 +20,8 @@ The number of nodes in the subRoot tree is in the range [1, 1000].
 
  */
 /*
-If assum m is the number of nodes in the 1st tree and n is the number of nodes in the 2nd tree, then
+https://leetcode.com/problems/subtree-of-another-tree/
+If assume m is the number of nodes in the 1st tree and n is the number of nodes in the 2nd tree, then
 
 Time complexity: O(m * n),
        worst case: for each node in the 1st tree, we need to check if isSame(Node s, Node t).

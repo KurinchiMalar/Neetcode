@@ -1,6 +1,6 @@
 
 /*
-https://leetcode.com/problems/invert-binary-tree/description/
+
 Given the root of a binary tree, invert the tree, and return its root.
 
 ex 1 : Input: root = [4,2,7,1,3,6,9]
@@ -17,6 +17,7 @@ The number of nodes in the tree is in the range [0, 100].
 -100 <= Node.val <= 100
  */
 /*
+https://leetcode.com/problems/invert-binary-tree/description/
 TC : O(n)
 SC : O(n)
  */
