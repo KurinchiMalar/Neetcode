@@ -36,8 +36,10 @@ public class RatInAMaze {
         int M = maze.length;
         int N = maze[0].length;
         int[][] visited = new int[M][N];
+
+        boolean result =  backtrack(maze,0,0,M,N,visited);
         printPath(visited,M,N);
-        return backtrack(maze,0,0,M,N,visited);
+        return result;
     }
 
     public boolean isSafe(int[][] maze, int row, int col, int M, int N){
