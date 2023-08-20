@@ -86,7 +86,7 @@ public class NumIslands {
 
     /*
     TC : O(M*N)
-    SC : O(min(M,N)) because in worst case where the grid is filled with lands, the size of queue can grow up to min(M,N)
+    SC : worst case O(M×N) in case that the grid map is filled with lands
      */
     public void bfs(char[][] grid,int row, int col, int m, int n) {
         grid[row][col] = '0';
