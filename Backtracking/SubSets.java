@@ -37,6 +37,32 @@ This copy costs O(n) and it is performed at each call of the recursive function,
 
 For output: we're creating 2^n subsets where the average set size is n/2 (for each A[i], half of the subsets will include A[i], half won't) = n/2 * 2^n = O(n * 2^n).
 
+Combination for given [1,2,3]
+[]
+[1]
+[2]
+[3]
+[1,2]
+[1,3]
+[2,3]
+[1,2,3]
+Time complexity
+2^N
+consider binary 0-leave number, 1-include number
+000
+001
+010
+011
+100
+101
+110
+111
+there are N numbers and 2 decision ( whether to include or leave a number )
+[1,2,3]
+[1(include/leave), 2(include/leave), 3(include/leave)]
+2*2*2 = 2^3
+so 2^N
+
  */
 package Backtracking;
 

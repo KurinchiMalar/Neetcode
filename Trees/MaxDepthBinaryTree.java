@@ -32,7 +32,7 @@ public class MaxDepthBinaryTree {
         }
         int lheight = maxDepth(root.left);
         int rheight = maxDepth(root.right);
-        return (lheight > rheight) ? (lheight + 1):(rheight + 1);
+        return (lheight > rheight)  ? (lheight + 1):(rheight + 1);
     }
 
     public static void main(String[] args){

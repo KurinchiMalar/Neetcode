@@ -1,6 +1,7 @@
 package Graphs;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /*
@@ -84,7 +85,7 @@ SC = O(V + E ) to create copy of all vertices and edges + O(V) for visited array
  */
 class CloneGraphDFS {
     Node[] visited = new Node[101]; // The number of nodes in the graph is in the range [0, 100]
-    public Node cloneGraph(Node node) {
+    public Node cloneGraphOld(Node node) {
         if(node == null) return null;
         Node copy = new Node(node.val);
         dfs(node,copy,visited);
@@ -101,6 +102,33 @@ class CloneGraphDFS {
                 dfs(n,newNode,visited);
             }else{
                 copy.neighbors.add(visited[n.val]); // copy of this node already present map it
+            }
+        }
+    }
+
+    /*
+    Cleaner implementation with HashMap
+     */
+
+    public Node cloneGraph(Node node) {
+
+        if(node == null)return null;
+        Node copy = new Node(node.val);
+        HashMap<Node,Node> visited = new HashMap<>();
+        dfs(node,copy,visited);
+        return copy;
+
+    }
+    public void dfs(Node node, Node copy, HashMap<Node,Node> visited){
+        visited.put(node,copy);
+
+        for(Node n:node.neighbors){
+            if(!visited.containsKey(n)){
+                Node newNode = new Node(n.val); //create a copy
+                copy.neighbors.add(newNode);
+                dfs(n,newNode,visited);
+            }else{
+                copy.neighbors.add(visited.get(n));
             }
         }
     }

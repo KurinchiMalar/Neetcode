@@ -75,11 +75,12 @@ public class KthNodeFromLast {
         list1.next.next = ListNode.createNode(3);
         list1.next.next.next = ListNode.createNode(4);
         list1.next.next.next.next = ListNode.createNode(5);
+        list1.next.next.next.next.next = ListNode.createNode(6);
 
         ListNode list2 = ListNode.createNode(1);
         list2.next = ListNode.createNode(2);
 
-        ListNode.printList(removeNthFromEnd(list1,2));
-        ListNode.printList(removeNthFromEnd(list2,2));
+        ListNode.printList(removeNthFromEnd(list1,4));
+        //ListNode.printList(removeNthFromEnd(list2,2));
     }
 }

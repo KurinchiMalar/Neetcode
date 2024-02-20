@@ -92,7 +92,6 @@ class MaxAreaOfIslandBFS {
 
         }
         maxArea = Integer.max(curArea,maxArea);
-        curArea = 0;
         return maxArea;
     }
 }

@@ -44,30 +44,30 @@ public class KthLargestElementArray {
     PriorityQueue<Integer> maxPQ = new PriorityQueue<Integer>(Collections.reverseOrder());
     public int findKthLargestMaxHeap(int[] nums, int k) {
 
-        for(int num:nums){
-            maxPQ.add(num);
+        for(int num:nums){  // n
+            maxPQ.add(num);  // log n
         }
-        for(int i = 1; i <= k && maxPQ.size() > 0 ; i++){
+        for(int i = 1; i <= k && maxPQ.size() > 0 ; i++){  // k
             if( i == k ){
                 return maxPQ.peek();
             }
-            maxPQ.poll();
+            maxPQ.poll(); // log n
         }
         return -1;
     }
 
-    //TC : O(n) adding to minHeap + O(logK) polling from heap = O(n logk)
+    //TC : O(n log k)
     //SC : O(k)
     // Keep adding elems to minHeap. At any point maintain K elements in minHeap.
     PriorityQueue<Integer> minPQ = new PriorityQueue<Integer>();
 
     public int findKthLargestMinHeap(int[] nums, int k){
 
-        for(int num : nums){
-            minPQ.add(num);
+        for(int num : nums){ //n
+            minPQ.add(num);  //log k  (k elements in heap...add will be log k)
 
             if(minPQ.size() > k){
-                minPQ.poll(); // min so far will be popped out
+                minPQ.poll(); // min so far will be popped out (log k)
             }
         }
         return minPQ.peek();

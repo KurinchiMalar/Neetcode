@@ -122,12 +122,12 @@ class ValidAnagram {
 
 
     public static void main(String[] args) {
-        /*System.out.println("cat,rat :" + isAnagram("cat", "rat"));
+        System.out.println("cat,rat :" + isAnagram("cat", "rat"));
         System.out.println("aa,bb :" + isAnagram("aa", "bb"));
         System.out.println("aba,baa :" + isAnagram("aba", "baa"));
         System.out.println("anagram,gramana :" + isAnagram("anagram", "gramana"));
-        System.out.println("aa,aaaaa :" + isAnagram("aa", "aaaaa"));*/
+        /*System.out.println("aa,aaaaa :" + isAnagram("aa", "aaaaa"));
         System.out.println("duh,ill :" + isAnagram("duh", "ill"));
-        System.out.println("duh,ill :" + isValidAnagramAsciiSum("duh", "ill"));
+        System.out.println("duh,ill :" + isValidAnagramAsciiSum("duh", "ill"));*/
     }
 }

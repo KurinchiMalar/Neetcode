@@ -40,6 +40,8 @@ tasks[i] is upper-case English letter.
 The integer n is in the range [0, 100].
  */
 /*
+
+https://leetcode.com/problems/task-scheduler/solutions/104500/java-o-n-time-o-1-space-1-pass-no-sorting-solution-with-detailed-explanation/
 TC : O(n)
 SC : O(26)
  */
