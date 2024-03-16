@@ -55,6 +55,28 @@ public class LevelOrderTraversal {
         }
         return resultList;
     }
+    public static void levelOrderTest(TreeNode root) {
+
+        if(root == null){
+            return;
+        }
+        //List<List<Integer>> resultList =  new ArrayList<List<Integer>>();
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            //List<Integer> currentLevelList = new ArrayList<Integer>();
+            //int levelCount = queue.size();
+            //for(int i=0 ; i < levelCount ; i++){
+                TreeNode temp = queue.poll();
+                System.out.println(temp.val+ " ");
+                //currentLevelList.add(temp.val);
+                if(temp.left != null)queue.add(temp.left);
+                if(temp.right != null)queue.add(temp.right);
+            //}
+            //resultList.add(currentLevelList);
+        }
+        //return resultList;
+    }
 
     public static void main(String[] args){
         TreeNode root = new TreeNode(4);
@@ -74,6 +96,9 @@ public class LevelOrderTraversal {
 
         //Another implementation where complexity is O(n * n)
         TreeNode.printLevelOrder(root);
+
+        System.out.println("Test");
+        levelOrderTest(root);
     }
 
 }
