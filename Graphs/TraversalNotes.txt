@@ -1,0 +1,31 @@
+MAtrix
+
+BFS:  A B C D E
+DFS:  A D E B C
+
+From Tutorial
+A B C D E
+A D E C B
+
+BFS:  A B C D G E F
+DFS:  A C E F G B D
+
+From Tutorial
+A B C D G E F
+A C E F G D B
+
+---------------------
+AdjList
+
+BFS Adj list:  A B C D E
+DFS Adj list:  A D E B C
+From tutorial...
+A B C D E
+A D E C B
+
+
+BFS Adj list:  A B C D G E F
+DFS Adj list:  A C E F G B D
+From tutorial...
+A B C D G E F
+A C E F G D B

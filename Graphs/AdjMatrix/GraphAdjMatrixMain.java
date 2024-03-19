@@ -2,8 +2,15 @@ package Graphs.AdjMatrix;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class GraphAdjMatrixMain {
+
+    public static void clearVisits(List<GraphNode> nodeList){
+        for(GraphNode gnode : nodeList){
+            gnode.isVisited =false;
+        }
+    }
 
     public static void main(String[] args) {
         ArrayList<GraphNode> nodeList = new ArrayList<GraphNode>();
@@ -22,8 +29,19 @@ public class GraphAdjMatrixMain {
         g.addUndirectedEdge(3,4);
 
         System.out.println(g.toString());
-        System.out.println(Arrays.deepToString(g.adjacencyMatrix));
+        System.out.println("BFS: "+g.bfs(g));
+        clearVisits(g.nodeList);
+        System.out.println("DFS: "+g.dfs(g));
+        System.out.println("From Tutorial");
+        clearVisits(g.nodeList);
+        g.bfs1();
+        clearVisits(g.nodeList);
+        System.out.println();
+        g.dfs1();
 
+
+        //System.out.println(Arrays.deepToString(g.adjacencyMatrix));
+        System.out.println();
         System.out.println("*************************************");
         ArrayList<GraphNode> nodeList1 = new ArrayList<GraphNode>();
         nodeList1.add(new GraphNode("A",0));
@@ -44,12 +62,20 @@ public class GraphAdjMatrixMain {
         g1.addUndirectedEdge(5,6);
         System.out.println(g1.toString());
         System.out.println("BFS: "+g1.bfs(g1));
+        clearVisits(g1.nodeList);
+        System.out.println("DFS: "+g1.dfs(g1));
+        System.out.println("From Tutorial");
+        clearVisits(g1.nodeList);
+        g1.bfs1();
+        clearVisits(g1.nodeList);
+        System.out.println();
+        g1.dfs1();
 
 
         ArrayList<GraphNode> neighb = g1.getNeighbors(nodeList1.get(0));
-        System.out.println("Neighbors of "+nodeList1.get(0).name);
+        /*System.out.println("Neighbors of "+nodeList1.get(0).name);
         for(GraphNode n : neighb){
             System.out.print(" "+n.name);
-        }
+        }*/
     }
 }

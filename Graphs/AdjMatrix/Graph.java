@@ -3,6 +3,7 @@ package Graphs.AdjMatrix;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Graph {
 
@@ -80,7 +81,7 @@ G : 0 1 0 0 0 1 0
             GraphNode curr = bfsQ.poll();
             if(!curr.isVisited){
                 curr.isVisited = true;
-                s.append(curr.name);
+                s.append(curr.name+ " ");
 
                 ArrayList<GraphNode> curNeighbors = g.getNeighbors(curr);
                 if(curNeighbors != null && !curNeighbors.isEmpty()){
@@ -94,5 +95,86 @@ G : 0 1 0 0 0 1 0
 
         }
        return s.toString();
+    }
+
+    /*
+    TC : O(V + E)
+    SC : O(V + E)
+     */
+    public String dfs(Graph g){
+        if( g == null || g.nodeList.isEmpty()) return null;
+        Stack<GraphNode> stk = new Stack<GraphNode>();
+        StringBuilder s = new StringBuilder();
+        s.append(" ");
+        stk.push(nodeList.get(0));
+        while(!stk.isEmpty()){
+            GraphNode curr = stk.pop();
+            if(!curr.isVisited){
+                curr.isVisited = true;
+                s.append(curr.name+" ");
+
+                ArrayList<GraphNode> curNeighbors = g.getNeighbors(curr);
+                if(curNeighbors != null && !curNeighbors.isEmpty()){
+                    for(GraphNode neighborNode : curNeighbors){
+                        if(!neighborNode.isVisited){
+                            stk.push(neighborNode);
+                        }
+                    }
+                }
+            }
+        }
+        return s.toString();
+    }
+
+    // Below implementations from Tutorial
+    void bfsVisit(GraphNode node) {
+        LinkedList<GraphNode> queue = new LinkedList<GraphNode>();
+        queue.add(node);
+        while(!queue.isEmpty()) {
+            GraphNode currentNode = queue.remove(0);
+            currentNode.isVisited = true;
+            System.out.print(currentNode.name + " ");
+            ArrayList<GraphNode> neighbors = getNeighbors(currentNode);
+            for (GraphNode neighbor: neighbors) {
+                if (!neighbor.isVisited) {
+                    queue.add(neighbor);
+                    neighbor.isVisited = true;
+                }
+            }
+        }
+    }
+
+    public void bfs1() {
+        for (GraphNode node : nodeList) {
+            if(!node.isVisited) {
+                bfsVisit(node);
+            }
+        }
+    }
+
+    void dfsVisit(GraphNode node) {
+        Stack<GraphNode> stack = new Stack<>();
+        stack.push(node);
+        while(!stack.isEmpty()) {
+            GraphNode currentNode = stack.pop();
+            currentNode.isVisited = true;
+            System.out.print(currentNode.name + " ");
+            ArrayList<GraphNode> neighbors = getNeighbors(currentNode);
+            for (GraphNode neighbor : neighbors) {
+                if (!neighbor.isVisited) {
+                    stack.push(neighbor);
+                    neighbor.isVisited = true;
+                }
+            }
+
+        }
+    }
+
+    void dfs1() {
+        for (GraphNode node : nodeList) {
+            if(!node.isVisited) {
+                dfsVisit(node);
+            }
+        }
     }
 }

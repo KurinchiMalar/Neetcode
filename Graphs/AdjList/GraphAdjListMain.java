@@ -2,9 +2,16 @@ package Graphs.AdjList;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class GraphAdjListMain {
+
+    public static void clearVisits(List<GraphNode> nodeList){
+        for(GraphNode gnode : nodeList){
+            gnode.isVisited =false;
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -24,7 +31,18 @@ public class GraphAdjListMain {
         g.addUndirectedEdge(2,3);
         g.addUndirectedEdge(3,4);
 
-        g.bfs(g);
+        System.out.println(g.toString());
+        System.out.println("BFS Adj list: " + g.bfs(g));
+        clearVisits(g.nodeList);
+        System.out.println("DFS Adj list: " + g.dfs(g));
+        clearVisits(g.nodeList);
+        System.out.println("From tutorial...");
+        g.bfs1();
+        clearVisits(g.nodeList);
+        System.out.println();
+        g.dfs1();
+        clearVisits(g.nodeList);
+        System.out.println();
 
         ArrayList<GraphNode> nodeList1 = new ArrayList<GraphNode>();
         nodeList1.add(new GraphNode("A",0));
@@ -45,11 +63,22 @@ public class GraphAdjListMain {
         g1.addUndirectedEdge(4,5);
         g1.addUndirectedEdge(5,6);
 
-        System.out.println(g.toString());
-        System.out.println("--------------------");
+
+        System.out.println("-----------------------------");
+        System.out.println("*****************************");
+        System.out.println("-----------------------------");
         System.out.println(g1.toString());
-        System.out.println("************");
-        g1.bfs(g1);
+        System.out.println("BFS Adj list: " + g1.bfs(g1));
+        clearVisits(g1.nodeList);
+        System.out.println("DFS Adj list: " + g1.dfs(g1));
+        clearVisits(g1.nodeList);
+        System.out.println("From tutorial...");
+        g1.bfs1();
+        clearVisits(g1.nodeList);
+        System.out.println();
+        g1.dfs1();
+        clearVisits(g1.nodeList);
+        System.out.println();
 
     }
 }
