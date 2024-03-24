@@ -39,7 +39,7 @@ public class Graph {
     /*
     TC : O(V + E)
     SC : O(V + E)
-     */
+
     public  String bfs(Graph g){
         Queue<GraphNode> bfsQ = new LinkedList<GraphNode>();
         StringBuilder s = new StringBuilder();
@@ -69,7 +69,7 @@ public class Graph {
     /*
     TC : O(V + E)
     SC : O(V + E)
-     */
+
     public String dfs(Graph g){
         Stack<GraphNode> stk = new Stack<GraphNode>();
         StringBuilder s = new StringBuilder();
@@ -96,9 +96,13 @@ public class Graph {
             }
         }
         return s.toString();
-    }
-
+    }*/
+    /************************************ BFS ******************************************/
  // Below implementations from Tutorial
+    /*
+    TC : O(V + E)
+    SC : O(V + E)
+     */
     void bfsVisit(GraphNode node) {
         LinkedList<GraphNode> queue = new LinkedList<GraphNode>();
         queue.add(node);
@@ -109,7 +113,7 @@ public class Graph {
             for (GraphNode neighbor : currentNode.neighbors) {
                 if (!neighbor.isVisited) {
                     queue.add(neighbor);
-                    neighbor.isVisited=true;
+                    neighbor.isVisited=true; // AVOIDS Duplicate inserts into queue - OPTIMIZED
                 }
             }
         }
@@ -122,6 +126,13 @@ public class Graph {
             }
         }
     }
+
+    /************************************ DFS ******************************************/
+
+    /*
+    TC : O(V + E)
+    SC : O(V + E)
+     */
     void dfsVisit(GraphNode node) {
         Stack<GraphNode> stack = new Stack<>();
         stack.push(node);
@@ -132,7 +143,7 @@ public class Graph {
             for (GraphNode neighbor : currentNode.neighbors) {
                 if (!neighbor.isVisited) {
                     stack.push(neighbor);
-                    neighbor.isVisited=true;  // Avoids pushing visited nodes
+                    neighbor.isVisited=true;  // Avoids pushing visited nodes , // AVOIDS Duplicate inserts into stack - OPTIMIZED
                 }
             }
         }
@@ -142,6 +153,77 @@ public class Graph {
         for (GraphNode node : nodeList) {
             if(!node.isVisited) {
                 dfsVisit(node);
+            }
+        }
+    }
+
+
+    /************************************TOPOLOGICAL SORT******************************************/
+
+    public void addDirectedEdge(int i , int j){
+
+        GraphNode first = nodeList.get(i);
+        GraphNode second = nodeList.get(j);
+        first.neighbors.add(second);
+    }
+
+    void topoVisit(GraphNode node, Stack<GraphNode> stk){
+
+        for(GraphNode neighbor: node.neighbors){
+            if(!neighbor.isVisited){
+                topoVisit(neighbor,stk);
+            }
+        }
+        node.isVisited = true;
+        stk.push(node);
+    }
+
+    public void topoSort(List<GraphNode> nodeList){
+        Stack<GraphNode> stk = new Stack<GraphNode>();
+        if(nodeList == null || nodeList.isEmpty()){
+            return;
+        }
+        for(GraphNode node: nodeList){
+            if(!node.isVisited){
+                topoVisit(node, stk);
+            }
+        }
+        while(!stk.isEmpty()){
+            System.out.print(stk.pop().name+" ");
+        }
+    }
+
+    /************************************ SSSP BFS(Single Source Shortest Path - BFS) ******************************************/
+
+    public void printPath(GraphNode node){
+        if(node.parent != null){
+            printPath(node.parent);
+        }
+        System.out.print(node.name+"->");
+    }
+
+    public void bfsSSSP(GraphNode node){
+        if(node == null){
+            return;
+        }
+        Queue<GraphNode> queue = new LinkedList<GraphNode>();
+        queue.offer(node);
+
+        while(!queue.isEmpty()){
+            GraphNode curr = queue.poll();
+            curr.isVisited = true;
+            System.out.print("Paths of node : "+curr.name+" = ");
+            printPath(curr);
+            System.out.println();
+
+            if(curr.neighbors != null){
+                for(GraphNode neighbor : curr.neighbors){
+                    if(!neighbor.isVisited){
+                        neighbor.parent = curr;
+                        neighbor.isVisited = true;
+                        queue.offer(neighbor);
+                    }
+                }
             }
         }
     }

@@ -1,9 +1,6 @@
 package Graphs.AdjMatrix;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class Graph {
 
@@ -18,6 +15,10 @@ public class Graph {
     public void addUndirectedEdge(int i, int j){
         this.adjacencyMatrix[i][j] = 1;
         this.adjacencyMatrix[j][i] = 1;
+    }
+
+    public void addDirectedEdge(int i, int j){
+        this.adjacencyMatrix[i][j] = 1;
     }
 
     public String toString(){
@@ -60,7 +61,7 @@ G : 0 1 0 0 0 1 0
 
         int nodeIndex = node.index;
         for(int i = 0 ; i < this.adjacencyMatrix.length; i++){ // iterate all rows
-            if(this.adjacencyMatrix[i][nodeIndex] == 1) { // this row label is a neighbor
+            if(this.adjacencyMatrix[nodeIndex][i] == 1) { // whichever column for this row is marked 1 is a neighbor
                 neighbors.add(this.nodeList.get(i));
             }
         }
@@ -177,4 +178,69 @@ G : 0 1 0 0 0 1 0
             }
         }
     }
+
+    /************************************TOPOLOGICAL SORT******************************************/
+
+    void topoVisit(GraphNode node, Stack<GraphNode> stk){
+        if(node == null) return;
+        for(GraphNode neighbor : getNeighbors(node)){
+            if(!neighbor.isVisited){
+                topoVisit(neighbor,stk);
+            }
+        }
+        node.isVisited = true;
+        stk.push(node);
+    }
+
+    void topoSort(List<GraphNode> nodeList){
+        Stack<GraphNode> stk = new Stack<>();
+        if(nodeList == null || nodeList.isEmpty()){
+            return;
+        }
+        for(GraphNode node:nodeList){
+            if(!node.isVisited){
+                topoVisit(node,stk);
+            }
+        }
+
+        while(!stk.isEmpty()){
+            System.out.print(stk.pop().name+" ");
+        }
+    }
+
+    /************************************ SSSP - Single Source Shortest Path - BFS ******************************************/
+
+    public void printPath(GraphNode node){
+        if(node == null) return;
+        if(node.parent != null){
+            printPath((node.parent));
+        }
+        System.out.print(node.name+" ");
+    }
+
+    public void bfsSSSP(GraphNode node){
+        if(node == null) return;
+
+        Queue<GraphNode> queue = new LinkedList<>();
+        queue.offer(node);
+
+        while(!queue.isEmpty()){
+            GraphNode curr = queue.poll();
+            System.out.print("Paths of node : "+curr.name+" = ");
+            printPath(curr);
+            curr.isVisited = true;
+            System.out.println();
+            if(!getNeighbors(curr).isEmpty()){
+                for(GraphNode neighbor : getNeighbors(curr)){
+                    if(!neighbor.isVisited){
+                        queue.offer(neighbor);
+                        neighbor.isVisited = true;
+                        neighbor.parent = curr;
+                    }
+                }
+            }
+        }
+    }
+
+
 }
