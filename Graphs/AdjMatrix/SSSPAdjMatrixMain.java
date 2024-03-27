@@ -24,7 +24,7 @@ public class SSSPAdjMatrixMain {
         g1.addUndirectedEdge(4,5);
         g1.addUndirectedEdge(5,6);
 
-        g1.bfsSSSP(g1.nodeList.get(0));
+        //g1.bfsSSSP(g1.nodeList.get(0));
 
     }
 }

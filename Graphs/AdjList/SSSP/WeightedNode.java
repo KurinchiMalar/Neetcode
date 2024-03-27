@@ -1,4 +1,4 @@
-package Graphs.SSSP.Dijkstra_BellManFord;
+package Graphs.AdjList.SSSP;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ public class WeightedNode implements Comparable<WeightedNode> {
 
     String name;
     int index;
-    boolean isVisited;
+    public boolean isVisited;
     ArrayList<WeightedNode>  neighbors; // adj list
     WeightedNode parent;
     int cost;

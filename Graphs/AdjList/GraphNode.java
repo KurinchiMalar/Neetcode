@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class GraphNode {
     public String name;
     public int index;
-    boolean isVisited;
+    public boolean isVisited;
     public ArrayList<GraphNode> neighbors;
 
-    GraphNode parent;
+    public GraphNode parent;
 
     public GraphNode(String name , int index){
         this.name = name;

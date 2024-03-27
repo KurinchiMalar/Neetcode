@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Graph {
 
-    ArrayList<GraphNode> nodeList = new ArrayList<GraphNode>();
+    public ArrayList<GraphNode> nodeList = new ArrayList<GraphNode>();
     int[][] adjacencyMatrix;
 
     public Graph(ArrayList<GraphNode> nodeList) {
@@ -19,26 +19,6 @@ public class Graph {
 
     public void addDirectedEdge(int i, int j){
         this.adjacencyMatrix[i][j] = 1;
-    }
-
-    public String toString(){
-        StringBuilder s = new StringBuilder();
-        s.append("    ");
-
-        for(int i = 0 ; i < nodeList.size(); i++){
-            s.append(nodeList.get(i).name+" ");
-        }
-        s.append("\n");
-
-        for(int i = 0 ; i < nodeList.size(); i++){
-            s.append(nodeList.get(i).name+ " : ");
-
-            for(int j : adjacencyMatrix[i]){ // row elements
-                s.append(j+" ");
-            }
-            s.append("\n");
-        }
-        return s.toString();
     }
 
     // get Neighbors
@@ -68,147 +48,12 @@ G : 0 1 0 0 0 1 0
         return neighbors;
     }
 
-    /*
-    TC : O(V + E)
-    SC : O(V + E)
-     */
-    public String bfs(Graph g){
-        if(g == null || g.nodeList.isEmpty()) return null;
-        Queue<GraphNode> bfsQ = new LinkedList<GraphNode>();
-        StringBuilder s = new StringBuilder();
-        s.append(" ");
-        bfsQ.offer(nodeList.get(0));
-        while(!bfsQ.isEmpty()){
-            GraphNode curr = bfsQ.poll();
-            if(!curr.isVisited){
-                curr.isVisited = true;
-                s.append(curr.name+ " ");
-
-                ArrayList<GraphNode> curNeighbors = g.getNeighbors(curr);
-                if(curNeighbors != null && !curNeighbors.isEmpty()){
-                    for(GraphNode neighborNode : curNeighbors){
-                        if(!neighborNode.isVisited){
-                            bfsQ.offer(neighborNode);
-                        }
-                    }
-                }
-            }
-
-        }
-       return s.toString();
-    }
-
-    /*
-    TC : O(V + E)
-    SC : O(V + E)
-     */
-    public String dfs(Graph g){
-        if( g == null || g.nodeList.isEmpty()) return null;
-        Stack<GraphNode> stk = new Stack<GraphNode>();
-        StringBuilder s = new StringBuilder();
-        s.append(" ");
-        stk.push(nodeList.get(0));
-        while(!stk.isEmpty()){
-            GraphNode curr = stk.pop();
-            if(!curr.isVisited){
-                curr.isVisited = true;
-                s.append(curr.name+" ");
-
-                ArrayList<GraphNode> curNeighbors = g.getNeighbors(curr);
-                if(curNeighbors != null && !curNeighbors.isEmpty()){
-                    for(GraphNode neighborNode : curNeighbors){
-                        if(!neighborNode.isVisited){
-                            stk.push(neighborNode);
-                        }
-                    }
-                }
-            }
-        }
-        return s.toString();
-    }
-
-    // Below implementations from Tutorial
-    void bfsVisit(GraphNode node) {
-        LinkedList<GraphNode> queue = new LinkedList<GraphNode>();
-        queue.add(node);
-        while(!queue.isEmpty()) {
-            GraphNode currentNode = queue.remove(0);
-            currentNode.isVisited = true;
-            System.out.print(currentNode.name + " ");
-            ArrayList<GraphNode> neighbors = getNeighbors(currentNode);
-            for (GraphNode neighbor: neighbors) {
-                if (!neighbor.isVisited) {
-                    queue.add(neighbor);
-                    neighbor.isVisited = true;
-                }
-            }
+    public  void clearVisits(){
+        List<GraphNode> nodeList = this.nodeList;
+        for(GraphNode gnode : nodeList){
+            gnode.isVisited =false;
         }
     }
-
-    public void bfs1() {
-        for (GraphNode node : nodeList) {
-            if(!node.isVisited) {
-                bfsVisit(node);
-            }
-        }
-    }
-
-    void dfsVisit(GraphNode node) {
-        Stack<GraphNode> stack = new Stack<>();
-        stack.push(node);
-        while(!stack.isEmpty()) {
-            GraphNode currentNode = stack.pop();
-            currentNode.isVisited = true;
-            System.out.print(currentNode.name + " ");
-            ArrayList<GraphNode> neighbors = getNeighbors(currentNode);
-            for (GraphNode neighbor : neighbors) {
-                if (!neighbor.isVisited) {
-                    stack.push(neighbor);
-                    neighbor.isVisited = true;
-                }
-            }
-
-        }
-    }
-
-    void dfs1() {
-        for (GraphNode node : nodeList) {
-            if(!node.isVisited) {
-                dfsVisit(node);
-            }
-        }
-    }
-
-    /************************************TOPOLOGICAL SORT******************************************/
-
-    void topoVisit(GraphNode node, Stack<GraphNode> stk){
-        if(node == null) return;
-        for(GraphNode neighbor : getNeighbors(node)){
-            if(!neighbor.isVisited){
-                topoVisit(neighbor,stk);
-            }
-        }
-        node.isVisited = true;
-        stk.push(node);
-    }
-
-    void topoSort(List<GraphNode> nodeList){
-        Stack<GraphNode> stk = new Stack<>();
-        if(nodeList == null || nodeList.isEmpty()){
-            return;
-        }
-        for(GraphNode node:nodeList){
-            if(!node.isVisited){
-                topoVisit(node,stk);
-            }
-        }
-
-        while(!stk.isEmpty()){
-            System.out.print(stk.pop().name+" ");
-        }
-    }
-
-    /************************************ SSSP - Single Source Shortest Path - BFS ******************************************/
 
     public void printPath(GraphNode node){
         if(node == null) return;
@@ -218,29 +63,24 @@ G : 0 1 0 0 0 1 0
         System.out.print(node.name+" ");
     }
 
-    public void bfsSSSP(GraphNode node){
-        if(node == null) return;
+    public String toString(){
+        StringBuilder s = new StringBuilder();
+        s.append("    ");
 
-        Queue<GraphNode> queue = new LinkedList<>();
-        queue.offer(node);
-
-        while(!queue.isEmpty()){
-            GraphNode curr = queue.poll();
-            System.out.print("Paths of node : "+curr.name+" = ");
-            printPath(curr);
-            curr.isVisited = true;
-            System.out.println();
-            if(!getNeighbors(curr).isEmpty()){
-                for(GraphNode neighbor : getNeighbors(curr)){
-                    if(!neighbor.isVisited){
-                        queue.offer(neighbor);
-                        neighbor.isVisited = true;
-                        neighbor.parent = curr;
-                    }
-                }
-            }
+        for(int i = 0 ; i < nodeList.size(); i++){
+            s.append(nodeList.get(i).name+" ");
         }
-    }
+        s.append("\n");
 
+        for(int i = 0 ; i < nodeList.size(); i++){
+            s.append(nodeList.get(i).name+ " : ");
+
+            for(int j : adjacencyMatrix[i]){ // row elements
+                s.append(j+" ");
+            }
+            s.append("\n");
+        }
+        return s.toString();
+    }
 
 }
