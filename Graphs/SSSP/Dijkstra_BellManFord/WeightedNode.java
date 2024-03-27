@@ -1,4 +1,4 @@
-package Graphs.SSSP.Dijkstra;
+package Graphs.SSSP.Dijkstra_BellManFord;
 
 import java.util.ArrayList;
 import java.util.HashMap;
