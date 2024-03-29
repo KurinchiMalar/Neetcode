@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class WeightedNode implements Comparable<WeightedNode> {
 
-    String name;
+    public String name;
     int index;
     public boolean isVisited;
     ArrayList<WeightedNode>  neighbors; // adj list

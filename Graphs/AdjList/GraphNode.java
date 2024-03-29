@@ -7,7 +7,6 @@ public class GraphNode {
     public int index;
     public boolean isVisited;
     public ArrayList<GraphNode> neighbors;
-
     public GraphNode parent;
 
     public GraphNode(String name , int index){

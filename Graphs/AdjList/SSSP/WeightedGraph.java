@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class WeightedGraph {
-    ArrayList<WeightedNode> nodeList = new ArrayList<WeightedNode>();
+    public ArrayList<WeightedNode> nodeList = new ArrayList<WeightedNode>();
 
     public WeightedGraph(ArrayList<WeightedNode> nodeList){
         this.nodeList = nodeList;
