@@ -1,0 +1,12 @@
+https://leetcode.com/problems/contains-duplicate/solutions/3672475/4-method-s-c-java-python-beginner-friendly/
+Two Sum - https://leetcode.com/problems/two-sum/description/ - DONE
+Roman to Integer - https://leetcode.com/problems/roman-to-integer/description/
+Palindrome Number - https://leetcode.com/problems/palindrome-number/
+Maximum Subarray - https://leetcode.com/problems/maximum-subarray/
+Remove Element
+Contains Duplicate
+Add Two Numbers
+Majority Element
+Remove Duplicates from Sorted Array
+Valid Anagram
+Group Anagrams
