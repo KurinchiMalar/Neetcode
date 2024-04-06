@@ -1,4 +1,4 @@
-package Graphs.DisjointSets;
+package Graphs_Tushar;
 
 
 import java.util.HashMap;
