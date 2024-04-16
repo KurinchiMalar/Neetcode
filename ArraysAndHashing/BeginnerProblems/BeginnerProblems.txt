@@ -8,5 +8,5 @@ Contains Duplicate -https://leetcode.com/problems/contains-duplicate/description
 Add Two Numbers - https://leetcode.com/problems/add-two-numbers/description/
 Majority Element - https://leetcode.com/problems/majority-element/description/
 Remove Duplicates from Sorted Array - https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
-Valid Anagram
-Group Anagrams
+Valid Anagram - https://leetcode.com/problems/valid-anagram/description/
+Group Anagrams - https://leetcode.com/problems/group-anagrams/description/

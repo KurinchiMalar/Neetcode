@@ -78,6 +78,12 @@ class ValidAnagram {
         return false;
     }*/
     // More Readable.
+
+    /*
+    TC : O(m) --> m is the length of s (s and t length must be equal for valid anagram)
+    SC : O(m)
+
+     */
     public static boolean isAnagram(String s, String t) {
         int sourceLen = s.length();
         if (s == null || t == null) {
