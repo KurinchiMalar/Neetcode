@@ -145,7 +145,8 @@ class GroupAnagrams {
     }
 
         public static void main(String[] args){
-        String[] strs={"eat","tea","tan","ate","nat","bat"};
+        //String[] strs={"eat","tea","tan","ate","nat","bat"};
+            String[] strs={"eat","tea"};
         //List<List<String>> resultList = groupAnagrams(strs);
             List<List<String>> resultList = groupAnagramsEfficient(strs);
         System.out.println(resultList);

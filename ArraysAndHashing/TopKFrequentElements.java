@@ -77,7 +77,7 @@ class TopKFrequentElements {
             return new int[]{nums[0]};
         }
         HashMap<Integer,Integer> numsFrequencyMap = new HashMap<>();
-        for(int num:nums){
+        for(int num:nums){ //O(N)
             numsFrequencyMap.put(num,numsFrequencyMap.getOrDefault(num,0)+1);
         }
         /*for(Entry entry:numsFrequencyMap.entrySet()){
@@ -86,16 +86,15 @@ class TopKFrequentElements {
 
             PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
         for(int freq:numsFrequencyMap.values()){
-            maxHeap.add(freq);
+            maxHeap.add(freq);   // O(log N)
         }
         int[] resultAr = new int[k];
 
         for(int i=0;i < k;i++){  // O(k)
             int currentMax = maxHeap.poll(); // O(logn)
-            //System.out.println(currentMax);
+
             for(Entry entry:numsFrequencyMap.entrySet()){
-                if((int)entry.getValue()==currentMax && i < k){
-                    //resultList.add((int)entry.getKey());
+                if((int)entry.getValue()==currentMax ){
                     resultAr[i] = (int)entry.getKey();
                     numsFrequencyMap.remove(entry.getKey());
                     break;
@@ -159,7 +158,7 @@ class TopKFrequentElements {
         //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1,1,1,2,2,3},2)));// Expected Output: [1,2]
         //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1},1)));// Expected Output: [1]
         //System.out.println(""+Arrays.toString(topKFrequentNlognNaive(new int[]{1,2},2)));// Expected Output: [1,2]
-        //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1,2},2)));// Expected Output: [1,2]
+        System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1,2},2)));// Expected Output: [1,2]
         //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{4,1,-1,2,-1,2,3},2)));// Expected Output: [1,2]
         System.out.println(""+Arrays.toString(topKFrequentEfficient(new int[]{1,1,1,2,2,3},2)));// Expected Output: [1,2]
         System.out.println(""+Arrays.toString(topKFrequentEfficient(new int[]{1},1)));// Expected Output: [1]

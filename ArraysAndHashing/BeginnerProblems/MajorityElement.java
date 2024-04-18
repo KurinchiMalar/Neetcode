@@ -52,8 +52,8 @@ public class MajorityElement {
                 continue;
             }
             int count = freqMap.get(num);
-            if(count >= n / 2)return num;
             freqMap.put(num,count +1);
+            if(count >= n / 2)return num;
         }
         return -1;
     }
