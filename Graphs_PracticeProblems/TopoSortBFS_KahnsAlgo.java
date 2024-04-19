@@ -88,5 +88,12 @@ public class TopoSortBFS_KahnsAlgo {
 
         List<Integer> resultList = topoSortBFS(g);
         System.out.println(resultList);
+
+        /*
+        Graph g = new Graph(2);
+        g.addEdge(1,0);
+
+        OPT : [1,0] TopoSort
+         */
     }
 }
