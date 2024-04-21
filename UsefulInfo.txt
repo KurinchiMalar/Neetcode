@@ -10,3 +10,28 @@ ArrayList<int[]> to int[][]
         result.toArray(new int[result.size()][]); // int[][]
 
 
+/**********************************************************************/
+Custom Comparator ---> Arrays.sort()
+
+
+Ascending Order
+public int compare(Item i1, Item i2)
+    {
+        if (i1.Property== i2.Property)
+            return 0;
+        else if (i1.Property > i2.Property)    // not ascending so return 1
+            return 1;
+        else          // already in ascending so return -1
+            return -1;
+    }
+
+Descending Order
+public int compare(Item i1, Item i2)
+    {
+        if (i1.Property== i2.Property)
+            return 0;
+        else if (i1.Property < i2.Property)  //not descending so return 1
+            return 1;
+        else             // already in descending so return -1
+            return -1;
+    }
