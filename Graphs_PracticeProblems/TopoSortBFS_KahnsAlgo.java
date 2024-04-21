@@ -53,7 +53,7 @@ public class TopoSortBFS_KahnsAlgo {
             }
         }
 
-        System.out.println("Indegree Array: "+Arrays.toString(indegree));
+        //System.out.println("Indegree Array: "+Arrays.toString(indegree));
         Queue<Integer> queue = new LinkedList<Integer>();
 
         //2. Add all the vertices with indegree 0 into the queue.
@@ -87,7 +87,14 @@ public class TopoSortBFS_KahnsAlgo {
         g.addEdge(3,1);
 
         List<Integer> resultList = topoSortBFS(g);
-        System.out.println(resultList);
+        System.out.println("TopoSort BFS - Kahn's Algo "+ resultList);
+
+        Graph g1 = new Graph(4);
+        g1.addEdge(1,0);
+        g1.addEdge(2,0);
+        g1.addEdge(3,1);
+        g1.addEdge(3,2);
+        System.out.println("TopoSort BFS - Kahn's Algo "+ topoSortBFS(g1));
 
         /*
         Graph g = new Graph(2);

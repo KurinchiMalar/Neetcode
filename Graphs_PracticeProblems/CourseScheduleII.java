@@ -12,7 +12,31 @@ For example, the pair [0, 1], indicates that to take course 0 you have to first 
 
 Return the ordering of courses you should take to finish all courses. If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.
 
+Example 1:
 
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: [0,1]
+Explanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1].
+Example 2:
+
+Input: numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
+Output: [0,2,1,3]
+Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0.
+So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3].
+Example 3:
+
+Input: numCourses = 1, prerequisites = []
+Output: [0]
+
+
+Constraints:
+
+1 <= numCourses <= 2000
+0 <= prerequisites.length <= numCourses * (numCourses - 1)
+prerequisites[i].length == 2
+0 <= ai, bi < numCourses
+ai != bi
+All the pairs [ai, bi] are distinct.
  */
 /*
 TC : O(V+E)
@@ -45,7 +69,7 @@ class CourseScheduleII {
             this.adj[u].add(v);
         }
     }
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
+    public int[] findOrderBFS(int numCourses, int[][] prerequisites) {
 
         Queue<Integer> queue = new LinkedList<>();
         Graph g = new Graph(numCourses);
@@ -101,6 +125,59 @@ class CourseScheduleII {
         return resultList.stream().mapToInt(i->i).toArray();
 
     }
+
+    public boolean isCycle(int vertex,ArrayList<Integer>[] adj,boolean[] visited,boolean[] recursionStack,ArrayList<Integer> resultList){  // topoVisit
+
+        if(recursionStack[vertex]) return true;
+
+        if (visited[vertex]) return false; // we don't have to consider the visited vertices.
+
+        recursionStack[vertex] = true;
+        for (int neigbhor: adj[vertex]) {
+            if (isCycle(neigbhor,adj,visited,recursionStack,resultList))  // Idea of recursive stack: Taken a current vertex, if the neighbors map back to current vertex --> there is a cycle.
+                return true;
+        }
+
+        visited[vertex]= true;
+        recursionStack[vertex] = false; // unwind
+        resultList.add(vertex);
+        return false;
+    }
+
+    /*
+    TC : O(V + E)
+    SC : O(V + E ) // O(V) for recursive Stack, E --> graph Adj list
+     */
+
+    public int[] findOrderDFS(int numCourses, int[][] prerequisites) {
+        Graph g = new Graph(numCourses);
+        int V = g.getV();
+        int[] result = new int[V];
+        ArrayList<Integer> resultList = new ArrayList<Integer>();
+
+        // create the adjlist
+        for(int[] prereq: prerequisites){
+
+            g.getAdj()[prereq[0]].add(prereq[1]);
+
+        }
+        ArrayList<Integer>[] adj = g.getAdj();
+
+        boolean[] visited = new boolean[V];
+        boolean[] recursionStack = new boolean[V];
+        Arrays.fill(visited,false);
+        Arrays.fill(recursionStack,false);
+
+        for(int i = 0 ; i < V; i++) {
+            if (isCycle(i, adj, visited, recursionStack, resultList)) {
+                System.out.println("Cycle");
+                return new int[]{};
+            }
+        }
+
+        return resultList.stream().mapToInt(i->i).toArray();
+
+    }
     public static void main(String[] args) {
         CourseScheduleII ob = new CourseScheduleII();
         Graph g = new Graph(4);
@@ -109,6 +186,10 @@ class CourseScheduleII {
         g.addEdge(3, 2);
         g.addEdge(3, 1);
         int[][] prerequisites = {{0,1},{1,2},{3,2},{3,1}};
-        System.out.println(Arrays.toString(ob.findOrder(4,prerequisites)));
+        System.out.println(Arrays.toString(ob.findOrderBFS(4,prerequisites)));
+
+        int[][] prerequisites1 = {{0,1},{1,2}};
+        System.out.println(Arrays.toString(ob.findOrderDFS(3,prerequisites1)));
+
     }
 }

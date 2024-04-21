@@ -1,0 +1,12 @@
+/*
+ArrayList<int[]> to int[][]
+*/
+
+        ArrayList<int[]> result = new ArrayList<>();
+                        ArrayList<Integer> curResList = new ArrayList<Integer>();
+                         curResList.addAll(Arrays.asList(5,20));
+            result.add(curResList.stream().mapToInt(e->e).toArray());
+
+        result.toArray(new int[result.size()][]); // int[][]
+
+
