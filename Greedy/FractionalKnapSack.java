@@ -42,7 +42,7 @@ public class FractionalKnapSack {
 
     public double getMaxProfit(Item[] itemArr,int capacity){
         double maxProfit = 0d;
-        // sort itemArr based on weight to profit ratio
+        // sort descending itemArr based on weight to profit ratio
         Arrays.sort(itemArr,new Comparator<Item>(){  // O(nlogn)
             @Override
             public int compare(Item i1,Item i2){
