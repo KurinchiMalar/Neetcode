@@ -1,5 +1,7 @@
 package DivideAndConquer;
 
+import java.util.stream.IntStream;
+
 public class Fibonacci {
 
     public static int fibo(int n){
@@ -9,11 +11,8 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        System.out.println(fibo(-1));
-        System.out.println(fibo(2));
-        System.out.println(fibo(3));
-        System.out.println(fibo(5));
-        System.out.println(fibo(6));
+        IntStream.rangeClosed(0,10).forEach(i-> System.out.println("f( "+i+" )"+" = "+fibo(i)));
+
 
 
     }
