@@ -2,6 +2,10 @@ package DivideAndConquer;
 
 import java.util.stream.IntStream;
 
+/*
+TC : O( 2 ^ n)
+SC : O(n)
+ */
 public class Fibonacci {
 
     public static int fibo(int n){
