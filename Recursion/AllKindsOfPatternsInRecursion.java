@@ -24,6 +24,7 @@ public class AllKindsOfPatternsInRecursion {
     PICK AND NOT PICK STRATEGY
     TC : O( 2 pow n  * n)   ----> 2 choices (2 pow n) + O(n) to print the list at each i=n level .
     SC : O(n)
+
     */
     public void helper(int[] nums , int i, int n , int sum , int k, ArrayList<Integer> temp){
         if(i == n){
