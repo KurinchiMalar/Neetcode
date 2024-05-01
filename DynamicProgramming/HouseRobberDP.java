@@ -80,6 +80,31 @@ public class HouseRobberDP {
         return memo[n-1];
 
     }
+    /*
+    TC : O(n)
+    SC : O(1)
+     */
+
+    public  int robHelper_BU_SpaceOptimized(int[]  nums){
+        int n = nums.length;
+        if(n <= 0)return 0;
+        if(n == 1)return nums[0];
+        if(n == 2) return  Math.max(nums[0],nums[1]);
+
+        int prev1 = nums[0];
+        int prev2 = Math.max(nums[0],nums[1]);
+        int maxValue = 0;
+        for(int i = 2 ; i < n; i++){
+            int take = nums[i] + prev1;
+            int notTake = prev2;
+            maxValue = Math.max(take,notTake);
+
+            prev1 = prev2;
+            prev2 = maxValue;
+
+        }
+        return maxValue;
+    }
     public int robDP_BU(int[] nums) {
         int[] memo = new int[nums.length+2];
         Arrays.fill(memo,0);
@@ -94,6 +119,9 @@ public class HouseRobberDP {
         System.out.println("*********************************************");
         System.out.println(ob.robDP_BU(new int[]{6,7,1,30,8,2,4}));
         System.out.println(ob.robDP_BU(new int[]{1,2,3,1}));
+        System.out.println("*********************************************");
+        System.out.println(ob.robHelper_BU_SpaceOptimized(new int[]{6,7,1,30,8,2,4}));
+        System.out.println(ob.robHelper_BU_SpaceOptimized(new int[]{1,2,3,1}));
 
     }
 }
