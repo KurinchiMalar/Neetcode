@@ -5,6 +5,8 @@ import java.util.Arrays;
 /*
 https://www.youtube.com/watch?v=fJaKO8FbDdo&t=128s
 https://leetcode.com/problems/edit-distance/description/
+https://www.geeksforgeeks.org/edit-distance-dp-5/
+https://takeuforward.org/data-structure/edit-distance-dp-33/
 Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2.
 
 You have the following three operations permitted on a word:
