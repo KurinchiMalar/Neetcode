@@ -37,7 +37,7 @@ import java.util.Arrays;
 TC : O(n)
 SC : O(n) // memo + recursion
  */
-public class HouseRobberDP {
+public class HouseRobber1 {
 
     public int robHelper_TD(int[] nums, int i , int n,int[] memo){
 
@@ -62,6 +62,7 @@ public class HouseRobberDP {
     /*
     TC : O(n)
     SC : O(n)
+    https://leetcode.com/problems/house-robber/submissions/1246290478/
      */
 
     public int robHelper_BU(int[] nums,int n,int[] memo){
@@ -113,15 +114,19 @@ public class HouseRobberDP {
     }
 
     public static void main(String[] args) {
-        HouseRobberDP ob = new HouseRobberDP();
+        HouseRobber1 ob = new HouseRobber1();
         System.out.println(ob.robDP_TD(new int[]{6,7,1,30,8,2,4}));
         System.out.println(ob.robDP_TD(new int[]{1,2,3,1}));
+        System.out.println(ob.robDP_TD(new int[]{2,7,9,3,1}));
         System.out.println("*********************************************");
         System.out.println(ob.robDP_BU(new int[]{6,7,1,30,8,2,4}));
         System.out.println(ob.robDP_BU(new int[]{1,2,3,1}));
+        System.out.println(ob.robDP_BU(new int[]{2,7,9,3,1}));
         System.out.println("*********************************************");
         System.out.println(ob.robHelper_BU_SpaceOptimized(new int[]{6,7,1,30,8,2,4}));
         System.out.println(ob.robHelper_BU_SpaceOptimized(new int[]{1,2,3,1}));
+        System.out.println(ob.robHelper_BU_SpaceOptimized(new int[]{2,7,9,3,1}));
+
 
     }
 }

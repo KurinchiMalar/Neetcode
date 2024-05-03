@@ -39,7 +39,7 @@ Constraints:
 TC : O(2 ^ n)
 SC : O(n)
  */
-public class HouseRobber {
+public class HouseRobber1 {
     public int robHelper(int[] nums, int i , int n){
 
         if( n <= 0 ) return 0;
@@ -54,7 +54,7 @@ public class HouseRobber {
     }
 
     public static void main(String[] args) {
-        HouseRobber ob = new HouseRobber();
+        HouseRobber1 ob = new HouseRobber1();
         System.out.println(ob.rob(new int[]{6,7,1,30,8,2,4}));
         System.out.println(ob.rob(new int[]{1,2,3,1}));
 
