@@ -83,24 +83,86 @@ public class ZeroOneKnapSack {
         //At ind==0, we are considering the first element,
         // if the capacity of the knapsack is greater than the weight of the first item,
         //       we return val[0] as answer. We will achieve this using a for loop.
-        for(int i= weights[0]; i <= W; i++){  // W = 8 , weights[0] = 5 ...... All weights 5 ,6, 7, 8 can be picked as such
-            dp[0][i] = values[0];
+        for(int j= weights[0]; j <= W; j++){  // W = 8 , weights[0] = 5 ...... All weights 5 ,6, 7, 8 can be picked as such
+            dp[0][j] = values[0];
         }
         //we are done for the first row above
 
-        for(int ind = 1 ; ind < n; ind++){
-            for(int cap = 0 ; cap <= W; cap++){
+        for(int i = 1 ; i < n; i++){
+            for(int w = 0 ; w <= W; w++){
 
-                int notTake = dp[ind-1][cap];
+                int notTake = dp[i-1][w];
                 int take = Integer.MIN_VALUE;
-                if(weights[ind] <= cap){
-                    take = values[ind] + dp[ind-1][cap - weights[ind]];
+                if(weights[i] <= w){
+                    take = values[i] + dp[i-1][W - weights[i]];
                 }
-                dp[ind][cap] = Math.max(take,notTake);
+                dp[i][w] = Math.max(take,notTake);
             }
         }
         // The result is stored in the last row and last column of the DP array
         return dp[n-1][W];
+    }
+
+    public int maxValPossible_BottomUp_SpaceOptimized(int[] weights,int[] values,int n, int W){
+        //int[][] dp = new int[n][W+1];
+        int[] prev = new int[W+1]; // dp[i-1]
+        int[] cur = new int[W+1]; // columns equal to number of weights 0 to W
+
+        //Base Condition
+        //At ind==0, we are considering the first element,
+        // if the capacity of the knapsack is greater than the weight of the first item,
+        //       we return val[0] as answer. We will achieve this using a for loop.
+        for(int j= weights[0]; j <= W; j++){  // W = 8 , weights[0] = 5 ...... All weights 5 ,6, 7, 8 can be picked as such
+            prev[j] = values[0];
+        }
+        //we are done for the first row above
+
+        // dp[i-1] ---> prev
+        //dp[i] ---> cur
+        for(int i = 1 ; i < n; i++){
+            for(int w = 0 ; w <= W; w++){
+
+                int notTake = prev[w];
+                int take = Integer.MIN_VALUE;
+                if(weights[i] <= w){
+                    take = values[i] + prev[W - weights[i]];
+                }
+                cur[w] = Math.max(take,notTake);
+            }
+            prev = cur;
+        }
+        // The result is stored in the last row and last column of the DP array
+        return prev[W];
+    }
+
+    public int maxValPossible_BottomUp_SpaceOptimized_SingleArray(int[] weights,int[] values,int n, int W){
+        //int[][] dp = new int[n][W+1];
+        int[] prev = new int[W+1]; // dp[i-1]
+        //int[] cur = new int[W+1]; // columns equal to number of weights 0 to W
+
+        //Base Condition
+        //At ind==0, we are considering the first element,
+        // if the capacity of the knapsack is greater than the weight of the first item,
+        //       we return val[0] as answer. We will achieve this using a for loop.
+        for(int j= weights[0]; j <= W; j++){  // W = 8 , weights[0] = 5 ...... All weights 5 ,6, 7, 8 can be picked as such
+            prev[j] = values[0];
+        }
+        //we are done for the first row above
+        // dp[i-1] ---> prev
+        //dp[i] ---> cur
+        for(int i = 1 ; i < n; i++){
+            for(int w = W ; w >= 0; w--){
+
+                int notTake = prev[w];
+                int take = Integer.MIN_VALUE;
+                if(weights[i] <= w){
+                    take = values[i] + prev[W - weights[i]]; // logic is right portion of W is not being used , and this can be used to populate cur Values instead of using array.
+                }
+                prev[w] = Math.max(take,notTake);
+            }
+        }
+        // The result is stored in the last row and last column of the DP array
+        return prev[W];
     }
     public static void main(String[] args) {
         ZeroOneKnapSack ob = new ZeroOneKnapSack();
@@ -128,7 +190,12 @@ public class ZeroOneKnapSack {
         System.out.println("********* Bottom up Tabulation *************");
         System.out.println(ob.maxValPossible_BottomUp(weights,values,weights.length,5));
         System.out.println(ob.maxValPossible_BottomUp(new int[]{3,2,5},new int[]{30,40,60},3,6));
-
+        System.out.println("********* Bottom up Tabulation Space Optimization *************");
+        System.out.println(ob.maxValPossible_BottomUp_SpaceOptimized(weights,values,weights.length,5));
+        System.out.println(ob.maxValPossible_BottomUp_SpaceOptimized(new int[]{3,2,5},new int[]{30,40,60},3,6));
+        System.out.println("********* Bottom up Tabulation Space Optimization Single Array *************");
+        System.out.println(ob.maxValPossible_BottomUp_SpaceOptimized_SingleArray(weights,values,weights.length,5));
+        System.out.println(ob.maxValPossible_BottomUp_SpaceOptimized_SingleArray(new int[]{3,2,5},new int[]{30,40,60},3,6));
 
     }
 }
