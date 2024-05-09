@@ -32,7 +32,7 @@ public class SubSetSumEqualsKCount {
         return notTake+take;
 
     }
-    public int subarraySum(int[] nums, int k) {
+    public int subSetSum(int[] nums, int k) {
 
         return helper(nums.length-1,k,nums.length,nums);
     }
@@ -62,25 +62,59 @@ public class SubSetSumEqualsKCount {
         dp[i][target] = notTake+take;
         return dp[i][target];
     }
-    public int subarraySum_TD(int[] nums, int k) {
+    public int subSetSum_TD(int[] nums, int k) {
         int N = nums.length;
         int[][] dp = new int[N][k+1];
         for(int[] ar : dp) Arrays.fill(ar,-1); // mark unvisited
         return helper_TD(nums.length-1,k,nums.length,nums,dp);
     }
 
+    /*****************************************************************************************/
 
-    public static void main(String[] args) {
-        SubSetSumEqualsKCount ob = new SubSetSumEqualsKCount();
-        System.out.println(ob.subarraySum(new int[]{1,2,3},3));
-        System.out.println(ob.subarraySum(new int[]{1,1,1},2));
-        System.out.println(ob.subarraySum(new int[]{1,2,1,2,1},3));
-        System.out.println("*************************************************");
-        System.out.println(ob.subarraySum_TD(new int[]{1,2,3},3));
-        System.out.println(ob.subarraySum_TD(new int[]{1,1,1},2));
-        System.out.println(ob.subarraySum_TD(new int[]{1,2,1,2,1},3));
+    /*
+    TC : O(n * k)
+    SC : O(n * k) dp array
+     */
+    public int subSetSum_BU(int[] nums, int k) {
+        int N = nums.length;
 
+        int[][] dp = new int[N][k+1];
 
+        for(int ind=0; ind < N ; ind++){
+            dp[ind][0] = 1;
+        }
+        //if(nums[0] <= k){
+            dp[0][nums[0]] = 1;
+        //}
 
+        for(int i = 1; i < N; i++){
+            for(int t = 1; t <= k; t++){
+                int notTake = dp[i-1][t];
+                int take = 0;
+                if(nums[i] <= t){
+                    take = dp[i-1][t-nums[i]];
+                }
+                dp[i][t] = take + notTake;
+            }
+
+        }
+        return dp[N-1][k];
     }
+
+
+        public static void main(String[] args) {
+        SubSetSumEqualsKCount ob = new SubSetSumEqualsKCount();
+        System.out.println(ob.subSetSum(new int[]{1,2,3},3));
+        System.out.println(ob.subSetSum(new int[]{1,1,1},2));
+        System.out.println(ob.subSetSum(new int[]{1,2,1,2,1},3));
+        System.out.println("***************** Top Down ********************************");
+        System.out.println(ob.subSetSum_TD(new int[]{1,2,3},3));
+        System.out.println(ob.subSetSum_TD(new int[]{1,1,1},2));
+        System.out.println(ob.subSetSum_TD(new int[]{1,2,1,2,1},3));
+        System.out.println("*******************  Bottom Up ******************************");
+        System.out.println(ob.subSetSum_BU(new int[]{1,2,3},3));
+        System.out.println(ob.subSetSum_BU(new int[]{1,1,1},2));
+        System.out.println(ob.subSetSum_BU(new int[]{1,2,1,2,1},3));
+
+        }
 }
