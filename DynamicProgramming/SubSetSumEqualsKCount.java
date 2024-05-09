@@ -80,11 +80,11 @@ public class SubSetSumEqualsKCount {
 
         int[][] dp = new int[N][k+1];
 
-        for(int ind=0; ind < N ; ind++){
+        for(int ind=0; ind < N ; ind++){  // BC 1
             dp[ind][0] = 1;
         }
         //if(nums[0] <= k){
-            dp[0][nums[0]] = 1;
+            dp[0][nums[0]] = 1;   // BC 2
         //}
 
         for(int i = 1; i < N; i++){
@@ -101,8 +101,40 @@ public class SubSetSumEqualsKCount {
         return dp[N-1][k];
     }
 
+    /*****************************************************************************************/
+    /*
+    TC : O(n * k)
+    SC : O(k)
+     */
+    public int subSetSum_BU_SpaceOptimized(int[] nums, int k) {
+        int N = nums.length;
 
-        public static void main(String[] args) {
+        // we need only the i-1 row for computation of i th row.
+        int[] prev = new int[k+1];
+
+        prev[0] = 1; // first row first elem - BC 1
+
+        prev[nums[0]] = 1; // BC 2
+
+
+        for(int i = 1; i < N; i++){
+            int[] cur = new int[k+1];
+            cur[0] = 1;
+            for(int t = 0; t <= k; t++){
+                int notTake = prev[t];
+                int take = 0;
+                if(nums[i] <= t){
+                    take = prev[t-nums[i]];
+                }
+                cur[t] = take + notTake;
+            }
+            prev = cur;
+        }
+        return prev[k];
+    }
+
+
+    public static void main(String[] args) {
         SubSetSumEqualsKCount ob = new SubSetSumEqualsKCount();
         System.out.println(ob.subSetSum(new int[]{1,2,3},3));
         System.out.println(ob.subSetSum(new int[]{1,1,1},2));
@@ -115,6 +147,9 @@ public class SubSetSumEqualsKCount {
         System.out.println(ob.subSetSum_BU(new int[]{1,2,3},3));
         System.out.println(ob.subSetSum_BU(new int[]{1,1,1},2));
         System.out.println(ob.subSetSum_BU(new int[]{1,2,1,2,1},3));
-
-        }
+        System.out.println("*******************  Bottom Up Space Optimized ******************************");
+        System.out.println(ob.subSetSum_BU_SpaceOptimized(new int[]{1,2,3},3));
+        System.out.println(ob.subSetSum_BU_SpaceOptimized(new int[]{1,1,1},2));
+        System.out.println(ob.subSetSum_BU_SpaceOptimized(new int[]{1,2,1,2,1},3));
+    }
 }
