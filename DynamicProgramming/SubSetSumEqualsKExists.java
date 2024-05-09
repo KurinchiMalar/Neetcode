@@ -8,14 +8,8 @@ Is Subset with sum K exists --> return true else false
 https://takeuforward.org/data-structure/subset-sum-equal-to-target-dp-14/
 https://www.youtube.com/watch?v=fWX9xDmIzRI&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=15
 DP 14. Subset Sum Equals to Target | Identify DP on Subsequences and Ways to Solve them
-
-
-Count subsets with sum K
-https://leetcode.com/problems/subarray-sum-equals-k/description/
-https://www.youtube.com/watch?v=ZHyb-A2Mte4
-DP 17. Counts Subsets with Sum K
  */
-public class SubArraySumEqualsK {
+public class SubSetSumEqualsKExists {
 
     public boolean iSExistsSubset(int i, int target,int[] nums){
         if(i < 0 || i >= nums.length){
@@ -83,7 +77,7 @@ public class SubArraySumEqualsK {
         return notTake || take;
     }
     public boolean isExistsSubsetWithSumK_topDownMemoization(int[] nums,int target){
-        int[][] dp = new int[nums.length+1][target+1];
+        int[][] dp = new int[nums.length][target+1];
         for(int[] ar: dp){
             Arrays.fill(ar,-1);
         }
@@ -108,9 +102,9 @@ public class SubArraySumEqualsK {
 
         //Initialize first row of dp table
         // if index 0 and target == nums[i] return true Base Case 2
-        if(nums[0] <= target){
+        //if(nums[0] <= target){
             dp[0][nums[0]] = true;
-        }
+        //}
 
         for(int i = 1; i < N ; i++){
             for(int t = 1 ; t <= target; t++){  // t = 0 already completed base Case 1
@@ -131,7 +125,7 @@ public class SubArraySumEqualsK {
 
 
     public static void main(String[] args) {
-        SubArraySumEqualsK ob = new SubArraySumEqualsK();
+        SubSetSumEqualsKExists ob = new SubSetSumEqualsKExists();
         System.out.println(ob.isExistsSubsetWithSumK_Recursion(new int[]{1,2,3,4},4));
         System.out.println(ob.isExistsSubsetWithSumK_Recursion(new int[]{1,2,3,4},91));
         System.out.println(ob.isExistsSubsetWithSumK_Recursion(new int[]{1,1,1},2));
