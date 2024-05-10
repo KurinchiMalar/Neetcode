@@ -4,6 +4,19 @@ import java.util.Arrays;
 
 /*
 
+Problem statement
+You are given an array/list ‘ARR’ of ‘N’ positive integers and an integer ‘K’. Your task is to check if there exists a subset in ‘ARR’ with a sum equal to ‘K’.
+
+Note: Return true if there exists a subset with sum equal to ‘K’. Otherwise, return false.
+
+For Example :
+If ‘ARR’ is {1,2,3,4} and ‘K’ = 4, then there exists 2 subsets with sum = 4. These are {1,3} and {4}. Hence, return true.
+
+1 <= N <= 10^3
+0 <= ARR[i] <= 10^9
+0 <= K <= 10^3
+
+
 Is Subset with sum K exists --> return true else false
 https://takeuforward.org/data-structure/subset-sum-equal-to-target-dp-14/
 https://www.youtube.com/watch?v=fWX9xDmIzRI&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=15
@@ -102,9 +115,10 @@ public class SubSetSumEqualsKExists {
 
         //Initialize first row of dp table
         // if index 0 and target == nums[i] return true Base Case 2
-        //if(nums[0] <= target){
+        // nums[0] > target --> not applicable that should be handled
+        if(nums[0] <= target){
             dp[0][nums[0]] = true;
-        //}
+        }
 
         for(int i = 1; i < N ; i++){
             for(int t = 1 ; t <= target; t++){  // t = 0 already completed base Case 1
@@ -123,6 +137,31 @@ public class SubSetSumEqualsKExists {
 
     /*********************************************************************************************************************/
 
+    public boolean isExistsSubset_TD1(int i,int target,int n, int[] nums,int[][] dp){
+
+        if(i < 0 || i >= n) return false;
+        if(dp[i][target] != -1) return (dp[i][target] == 1 )? true:false;
+
+        if(i == 0){ // single elem
+            if(nums[i] == 0 && target == 0)return true;
+            if(target == 0 || nums[i] == target) return true;
+            return false;
+        }
+
+        boolean notTake = isExistsSubset_TD1(i-1,target,n,nums,dp);
+        boolean take = nums[i] <= target && isExistsSubset_TD1(i - 1, target - nums[i], n, nums, dp);
+        dp[i][target] = (take || notTake) ? 1 : 0;
+        return (take || notTake);
+
+    }
+
+    public boolean isExistsSubset_TopDown_ExtraCasesFor0(int[] nums,int target){
+        int[][] dp = new int[nums.length][target+1];
+        for(int[] ar: dp){
+            Arrays.fill(ar,-1);
+        }
+        return isExistsSubset_TD1(nums.length-1,target,nums.length,nums,dp);
+    }
 
     public static void main(String[] args) {
         SubSetSumEqualsKExists ob = new SubSetSumEqualsKExists();
@@ -133,10 +172,19 @@ public class SubSetSumEqualsKExists {
         System.out.println(ob.isExistsSubsetWithSumK_topDownMemoization(new int[]{1,2,3,4},4));
         System.out.println(ob.isExistsSubsetWithSumK_topDownMemoization(new int[]{1,2,3,4},91));
         System.out.println(ob.isExistsSubsetWithSumK_topDownMemoization(new int[]{1,1,1},2));
+        System.out.println(ob.isExistsSubsetWithSumK_topDownMemoization(new int[]{1,0,0},0));
+
         System.out.println("*********************** Bottom Up with Tabulation ************************");
         System.out.println(ob.iSExistsSubset_BU(new int[]{1,2,3,4},4));
         System.out.println(ob.iSExistsSubset_BU(new int[]{1,2,3,4},91));
         System.out.println(ob.iSExistsSubset_BU(new int[]{1,1,1},2));
+        System.out.println("***********************isExistsSubset_TopDown_ExtraCasesFor - nums[i] can be 0 ***********************");
+        System.out.println(ob.isExistsSubset_TopDown_ExtraCasesFor0(new int[]{1,2,3,4},4));
+        System.out.println(ob.isExistsSubset_TopDown_ExtraCasesFor0(new int[]{1,2,3,4},91));
+        System.out.println(ob.isExistsSubset_TopDown_ExtraCasesFor0(new int[]{1,1,1},2));
+        System.out.println(ob.isExistsSubset_TopDown_ExtraCasesFor0(new int[]{1,0,0},0));
+        System.out.println(ob.isExistsSubset_TopDown_ExtraCasesFor0(new int[]{1,5,11,5},22));
+
 
     }
 }

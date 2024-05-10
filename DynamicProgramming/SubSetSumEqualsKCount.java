@@ -3,6 +3,15 @@ package DynamicProgramming;
 import java.util.Arrays;
 
 /*
+Given an array arr[] of length N and an integer X, the task is to find the number of subsets with a sum equal to X.
+
+Input: arr[] = {1, 2, 3, 3}, X = 6
+Output: 3
+All the possible subsets are {1, 2, 3},
+{1, 2, 3} and {3, 3}
+
+Input: arr[] = {1, 1, 1, 1}, X = 1
+Output: 4
 
 Count subsets with sum K
 https://www.codingninjas.com/codestudio/problems/number-of-subsets_3952532?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos
@@ -38,7 +47,7 @@ public class SubSetSumEqualsKCount {
             return 0;
         }
 
-        //if(target == 0) return 1;
+        //if(target == 0) return 1;  --> Adding this wont work for case {0,0,1} , target = 1
 
         int notTake = helper(i-1,target,n, nums);
         int take = (nums[i] <= target) ? helper(i-1,target-nums[i],n, nums):0;
@@ -94,18 +103,29 @@ public class SubSetSumEqualsKCount {
 
         int[][] dp = new int[N][k+1];
 
-        for(int ind=0; ind < N ; ind++){  // BC 1
+        /*for(int ind=0; ind < N ; ind++){  // BC 1    does not work if nums contain 0
             dp[ind][0] = 1;
-        }
-        // populate for i = 0
+        }*/
+
+        // target == 0 and nums[0] == 0 return 2
+        // target == 0 , nums[0] != 0  return 1
+        dp[0][0] = (nums[0] == 0) ? 2 : 1;  // --------------------------> BC 1 handling 0 case as well
+
+
+        /*// populate for i = 0
         //if(nums[0] <= k){
-            dp[0][nums[0]] = 1;   // BC 2   nums[i] == target
+            dp[0][nums[0]] = 1;   // BC 2   nums[i] == target  // this is wrong when nums[0] = 0 ---> dp[0][0] = 1 (expected is 2) this will be overwritten
+
         // {0,0,1} test case not handled .
-        //}
+        //}*/
+
+        if(nums[0] != 0 && nums[0] <= k){
+            dp[0][nums[0]] = 1; // nums[0] = target case basically , // --------------------------> BC 2 handling 0 case as well
+        }
 
 
         for(int i = 1; i < N; i++){
-            for(int t = 1; t <= k; t++){
+            for(int t = 0; t <= k; t++){
                 int notTake = dp[i-1][t];
                 int take = 0;
                 if(nums[i] <= t){
@@ -118,39 +138,7 @@ public class SubSetSumEqualsKCount {
         return dp[N-1][k];
     }
 
-    /*
-TC : O(n * k)
-SC : O(n * k) dp array
-https://www.geeksforgeeks.org/count-of-subsets-with-sum-equal-to-x/
- */
-    public int subSetSum_BU_WorksForNums0(int[] nums, int k) {
-        int N = nums.length;
 
-        int[][] dp = new int[N+1][k+1];
-
-        //Initialization of Matrix:
-        //mat[0][0] = 1 because If k  is 0 then there exists null subset {} whose sum is 0
-        dp[0][0] = 1;
-
-        //Populating first row
-        for(int j = 1 ; j <= k ; j++){
-            dp[0][j] = 0;
-        }
-        //Finished populating first row.
-        for(int i = 1; i <= N; i++){
-            for(int t = 0; t <= k; t++){
-
-                // If curVal is greater than curTarget it cannot contribute a way so , copy the count of prev row
-                if(nums[i-1] > t){
-                    dp[i][t] = dp[i-1][t];
-                }else{
-                    dp[i][t] = dp[i-1][t] + dp[i-1][t - nums[i-1]];
-                }
-            }
-        }
-
-        return dp[N][k];
-    }
 
     /*****************************************************************************************/
     /*
@@ -160,22 +148,23 @@ https://www.geeksforgeeks.org/count-of-subsets-with-sum-equal-to-x/
     public int subSetSum_BU_SpaceOptimized(int[] nums, int k) {
         int N = nums.length;
 
-        // we need only the i-1 row for computation of i th row.
+        //int[][] dp = new int[N][k+1];
         int[] prev = new int[k+1];
 
-        prev[0] = 1; // first row first elem - BC 1
+        prev[0] = (nums[0] == 0) ? 2 : 1;  // --------------------------> BC 1 handling 0 case as well
 
-        prev[nums[0]] = 1; // BC 2
+        if(nums[0] != 0 && nums[0] <= k){
+            prev[nums[0]] = 1; // nums[0] = target case basically , // --------------------------> BC 2 handling 0 case as well
+        }
 
 
         for(int i = 1; i < N; i++){
             int[] cur = new int[k+1];
-            cur[0] = 1;
             for(int t = 0; t <= k; t++){
                 int notTake = prev[t];
                 int take = 0;
                 if(nums[i] <= t){
-                    take = prev[t-nums[i]];
+                    take =prev[t-nums[i]];
                 }
                 cur[t] = take + notTake;
             }
@@ -202,7 +191,7 @@ https://www.geeksforgeeks.org/count-of-subsets-with-sum-equal-to-x/
         System.out.println(ob.subSetSum_BU(new int[]{1,2,3},3));
         System.out.println(ob.subSetSum_BU(new int[]{1,1,1},2));
         System.out.println(ob.subSetSum_BU(new int[]{1,2,1,2,1},3));
-        System.out.println(ob.subSetSum_BU_WorksForNums0(new int[]{0,0,1},1));
+        System.out.println(ob.subSetSum_BU(new int[]{0,0,1},1));
 
         System.out.println("*******************  Bottom Up Space Optimized ******************************");
         System.out.println(ob.subSetSum_BU_SpaceOptimized(new int[]{1,2,3},3));
