@@ -118,13 +118,17 @@ public class SubArraySumEqualsK {
         for(int i = 0 ; i < n; i++){
             sumSoFar += nums[i];
             int diff = sumSoFar-k;
-            if(!hmap.containsKey(diff)){
+            /*if(!hmap.containsKey(diff)){
                 hmap.put(sumSoFar,1);
             }else{
                 count += hmap.get(diff);
                 hmap.put(sumSoFar,hmap.getOrDefault(sumSoFar,0)+1);
 
+            }*/
+            if(hmap.containsKey(diff)){
+                count += hmap.get(diff);
             }
+            hmap.put(sumSoFar,hmap.getOrDefault(sumSoFar,0)+1);
 
         }
         return count;
