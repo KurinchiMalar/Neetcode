@@ -78,6 +78,7 @@ public class MinimumCoins_CoinChange {
     /*
     TC : O( N * amount)
     SC : O(N * amount) + O(N)
+    My submission : https://leetcode.com/problems/coin-change/submissions/1256923519/
      */
     public int coinChangeTD_Memoization(int i, int amount,int[] coins,int[][] dp){
 
@@ -114,6 +115,7 @@ public class MinimumCoins_CoinChange {
       /*
     TC : O( N * amount)
     SC : O(N * amount)
+      My submission : https://leetcode.com/problems/coin-change/submissions/1256924093/
      */
     public int coinChangeBU_Tabulation(int[] coins,int amount){
         int n = coins.length;
@@ -144,6 +146,7 @@ public class MinimumCoins_CoinChange {
           /*
     TC : O( N * amount)
     SC : O(amount)
+    My submission : https://leetcode.com/problems/coin-change/submissions/1256925126/
      */
     public int coinChangeBU_SpaceOptimized(int[] coins,int amount){
         int n = coins.length;
