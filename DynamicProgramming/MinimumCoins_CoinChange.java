@@ -13,7 +13,8 @@ Return the fewest number of coins that you need to make up that amount. If that 
 
 You may assume that you have an infinite number of each kind of coin.
 
-
+https://takeuforward.org/data-structure/minimum-coins-dp-20/
+https://www.youtube.com/watch?v=myPeWb3Y68A&t=1011s
 
 Example 1:
 
@@ -198,6 +199,9 @@ public class MinimumCoins_CoinChange {
         System.out.println(ob.coinChangeBU_SpaceOptimized(new int[]{1,3,5},11));
         System.out.println(ob.coinChangeBU_SpaceOptimized(new int[]{2},3));
         System.out.println(ob.coinChangeBU_SpaceOptimized(new int[]{1},0));
+
+        System.out.println(ob.coinChangeBU_SpaceOptimized(new int[]{1,2,5},5));
+
 
 
 
