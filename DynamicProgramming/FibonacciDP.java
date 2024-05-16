@@ -1,5 +1,6 @@
 package DynamicProgramming;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.stream.IntStream;
 
@@ -10,6 +11,33 @@ SC : O(n)
 
  */
 public class FibonacciDP {
+
+        /*
+    top down memoization
+    TC : O(n)
+    SC : O(n) (Additional array  + recursion stack)
+    My submission: https://leetcode.com/problems/fibonacci-number/submissions/1259232973/
+    */
+
+    public static int fibHelper(int n, int[] dp){
+
+        if(n <= 0) return 0;
+        if(n == 1) return 1;
+        if(dp[n] != -1) return dp[n];
+
+        //intialize
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[n] = fibHelper(n-1,dp) + fibHelper(n-2,dp);
+        return dp[n];
+
+    }
+    public static int fib(int n) {
+        int[] dp = new int[n+1];
+        Arrays.fill(dp,-1);
+        return fibHelper(n,dp);
+
+    }
 
 
     /*
@@ -67,12 +95,16 @@ public class FibonacciDP {
     }
 
     public static void main(String[] args) {
+        System.out.println("*********************************  Top Down - Using Array dp **********************************************");
+        IntStream.rangeClosed(0,10).forEach(i-> System.out.println("f( "+i+" )"+" = "+fib(i)));
+
+        System.out.println("*********************************  Top Down **********************************************");
         HashMap<Integer,Integer> memoTD = new HashMap<Integer,Integer>();
         IntStream.rangeClosed(0,10).forEach(i-> System.out.println("f( "+i+" )"+" = "+fibodpTD(memoTD,i)));
-        System.out.println("*******************************************************************************");
+        System.out.println("********************************** Bottom up *******************************************");
         HashMap<Integer,Integer> memoBU = new HashMap<Integer,Integer>();
         IntStream.rangeClosed(0,10).forEach(i-> System.out.println("f( "+i+" )"+" = "+fibodpBU(memoBU,i)));
-        System.out.println("*******************************************************************************");
+        System.out.println("********************************  BU Space Optimized **************************************");
         IntStream.rangeClosed(0,10).forEach(i-> System.out.println("f( "+i+" )"+" = "+fibodpBU_SpaceOptimised(i)));
 
     }
