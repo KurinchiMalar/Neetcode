@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package DynamicProgramming.DP_on_Subsequences;
 /*
 https://leetcode.com/problems/target-sum/description/
 

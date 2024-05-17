@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package DynamicProgramming.DP_on_Subsequences;
 
 /*
 DP 18. Count Partitions With Given Difference | Dp on Subsequences
