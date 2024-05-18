@@ -44,10 +44,6 @@ public class LongestCommonSubsequence {
             return 0;
         }
 
-        if(i == 0 && j == 0){
-            return (s1.charAt(i) == s2.charAt(j)) ? 1 : 0;
-        }
-
         if(s1.charAt(i) == s2.charAt(j)){
             return 1 + lcsRecursion(i-1,j-1,s1,s2);
         }
@@ -127,15 +123,11 @@ public class LongestCommonSubsequence {
 
         //first row
         for(int j = 0 ; j < n2; j++){
-            if(s1.charAt(0) == s2.charAt(j)){
                 dp[0][j] = 0;
-            }
         }
         //first column
         for(int i = 1 ; i < n1; i++){ // i= 0 already completed
-            if(s1.charAt(i) == s2.charAt(0)){
                 dp[i][0] = 0;
-            }
         }
         for(int i = 1; i <= n1; i++){
             for(int j = 1; j <= n2 ; j++){
