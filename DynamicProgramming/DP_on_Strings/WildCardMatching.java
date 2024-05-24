@@ -39,6 +39,14 @@ p contains only lowercase English letters, '?' or '*'.
  */
 public class WildCardMatching {
 
+    boolean isAllStarsRegular(String S1, int i) {
+        for (int j = 0; j <= i; j++) {
+            if (S1.charAt(j) != '*')
+                return false;
+        }
+        return true;
+    }
+
     /*
     TC : O(2 pow n ) exponential
     SC : O(N1 + N2)
@@ -48,11 +56,7 @@ public class WildCardMatching {
         if(i < 0 && j < 0) return true; //empty string
 
         if(j < 0){ // if source string contains only * it can match to empty
-            while(i >= 0){
-                if(s1.charAt(i) != '*')return false;
-                i--;
-            }
-            return true;
+            return isAllStarsRegular(s1,i);
         }
         if(i < 0){ // source is over but there are still chars left in the other string
             return false;
@@ -85,11 +89,7 @@ public class WildCardMatching {
 
         if(i < 0 && j < 0) return true;
         if(j < 0){
-            while(i >= 0){
-                if(s1.charAt(i) != '*')return false;
-                i--;
-            }
-            return true;
+            return isAllStarsRegular(s1,i);
         }
         if(i < 0) return false;
         if(dp[i][j] != -1){

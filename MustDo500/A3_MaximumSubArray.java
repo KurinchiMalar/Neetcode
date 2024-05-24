@@ -39,6 +39,7 @@ public class A3_MaximumSubArray {
 
         for(int i = 0 ; i < nums.length; i++){
             curSum += nums[i];
+
             maxSumSoFar = Math.max(maxSumSoFar,curSum);
             // initialize for next iteration
             curSum = (curSum < 0) ? 0:curSum;
