@@ -66,5 +66,7 @@ class ContainerWithMaxWater {
         System.out.println(maxArea(new int[]{1,1}));
         System.out.println(maxArea(new int[]{1, 5, 4, 3}));
         System.out.println(maxArea(new int[]{3, 1, 2, 4, 5}));
+        System.out.println(maxArea(new int[]{1,2,1}));
+
     }
 }

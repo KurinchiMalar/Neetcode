@@ -1,14 +1,18 @@
-SUBARRAY:
+https://stackoverflow.com/questions/26568560/difference-between-subarray-subset-subsequence
+
+
+SUBARRAY: (ORDERED, CONTIGUOUS)
 A subarray is a contiguous non-empty sequence of elements within an array.
 https://leetcode.com/problems/subarray-sum-equals-k/description/
 
 
-SUBSEQUENCE:
-A subArray/subsequence is a contiguous or non-contiguous part of an array, where elements appear in the same order as the original array.
-For example, for the array: [2,3,1] , the subsequences will be [{2},{3},{1},{2,3},{2,1},{3,1},{2,3,1}} but {3,2} is not a subsequence because its elements are not in the same order as the original array.
+SUBSEQUENCE: (ORDERED, NEED NOT NECESSARILY BE CONTIGUOUS)
+A subsequence is a contiguous or non-contiguous part of an array, where elements appear in the same order as the original array.
+For example, for the array: [2,3,1] , the subsequences will be [{2},{3},{1},{2,3},{2,1},{3,1},{2,3,1}}
+but {3,2} is not a subsequence because its elements are not in the same order as the original array.
 
 
-SUBSET:
+SUBSET: (NO ORDER, NO CONTINUITY)
 ------
 Subset - need not be contiguous
 https://takeuforward.org/data-structure/count-subsets-with-sum-k-dp-17/
@@ -16,3 +20,54 @@ https://takeuforward.org/data-structure/count-subsets-with-sum-k-dp-17/
 
 "You are given an array 'arr' of size 'n' containing positive integers and a target sum 'k'.
  Find the number of ways of selecting the elements from the array such that the sum of chosen elements is equal to the target 'k'."
+ ----------------------------------------------------------------------------------------------------------------------------------
+
+ Consider an array:
+
+  {1,2,3,4}
+ Subarray: contiguous sequence in an array i.e.
+
+ {1,2},{1,2,3}
+ Subsequence: Need not to be contiguous, but maintains order i.e.
+
+ {1,2,4}
+ Subset: Same as subsequence except it has empty set i.e.
+
+  {1,3},{}
+ Given an array/sequence of size n, possible
+
+ Subarray = n*(n+1)/2
+ Subseqeunce = (2^n) -1 (non-empty subsequences)
+ Subset = 2^n
+
+
+
+A Simple and Straightforward Explanation:
+
+Subarray: It always should be in contiguous form.
+
+For example, lets take an array int arr=[10,20,30,40,50];
+
+-->Now lets see its various combinations:
+
+  subarr=[10,20] //true
+  subarr=[10,30] //false, because its not in contiguous form
+  subarr=[40,50] //true
+Subsequence: which don't need to be in contiguous form but same order.
+
+For example, lets take an array int arr=[10,20,30,40,50];
+
+-->Now lets see its various combinations:
+
+  subseq=[10,20]; //true
+  subseq=[10,30]; //true
+  subseq=[30,20]; //false, because order isn't maintained
+Subset: which mean any possible combinations.
+
+For example, lets take an array int arr=[10,20,30,40,50];
+
+-->Now lets see its various combinations:
+
+  subset={10,20}; //true
+  subset={10,30}; //true
+  subset={30,20}; //true
