@@ -1,0 +1,33 @@
+https://medium.com/enjoy-algorithm/system-design-concepts-for-interview-preparation-78d1412c04cb
+
+REST API Principles -- STUDY
+
+
+	API
+
+	/register
+	/login
+	/createSurvey
+	        post/survey/create
+
+	get/survey/id // blank form
+	post/survey
+	    {user:
+	     submissionData: {
+	     key:value
+	     key:value[]
+	     }}
+
+	/viewSurveyResults (Admin)
+
+
+DB Schema to be discussed
+
+Try to come up with a sequence diagram
+
+Hits to Registration Service can be reduced by ??
+
+                Mid Tier service which helps to isolate the unregistered users.
+
+
+

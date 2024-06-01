@@ -1,0 +1,31 @@
+
+Sys Design question :
+---------------------
+https://github.com/pankajyadav05/surveysparrow-be
+Task: Design a Backend Architecture for a Survey Company Platform
+As a backend technical architect, your task is to design a robust and scalable backend architecture for a survey company platform that meets the following requirements:
+
+User Authentication and Authorization: The platform should have a secure and reliable user authentication and authorization system, supporting features like user registration, login.
+
+Survey Management: The backend should support the management of surveys, including creating, updating, and retrieving survey forms, as well as storing and processing survey responses.
+
+Data Storage and Processing: The backend should have an efficient and scalable data storage solution to store user information, survey data, and any other relevant data. It should also support data processing and analytics for generating reports and insights.
+
+High Traffic Handling: The backend architecture should be designed to handle high traffic volumes, considering the potential for a large number of concurrent users accessing the platform.
+
+Scalability and Performance: The architecture should be scalable and optimized for performance to ensure fast response times and efficient resource utilization, even during periods of high traffic.
+
+Integration and API Management: The backend should have a well-designed API layer to facilitate integration with third-party services, such as analytics, notification services.
+
+Security and Compliance: The architecture should incorporate industry-standard security practices, such as encryption, access controls, and secure communication protocols, and comply with relevant data privacy and security regulations.
+
+
+Lots of data to be rendered on the form (I said Dynamic PHP rendering, there are other solutions as well interviewer said)
+
+User Restriction --> RateLimiting, (IP,MAC address)
+
+SQL to NOSQL  syncing --> Tungsten Replicator
+
+When not to use microservices ?
+
+    https://medium.com/design-microservices-architecture-with-patterns/when-to-use-and-when-not-to-use-microservices-no-silver-bullet-3ae293faf6d
