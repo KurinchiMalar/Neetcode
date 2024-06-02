@@ -79,7 +79,7 @@ public class LongestIncreasingSubsequence {
     public int lengthOfLIS_TDActual(int i , int prev, int n,int[] nums,int[][] dp){
         if(i == n) return 0;
 
-        if(dp[i][prev+1] != -1)return dp[prev+1][i];
+        if(dp[i][prev+1] != -1)return dp[i][prev+1];
 
         int notPick = lengthOfLIS_TDActual(i+1,prev,n,nums,dp);
         int pick = 0;

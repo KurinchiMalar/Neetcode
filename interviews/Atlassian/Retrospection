@@ -1,0 +1,14 @@
+https://www.geeksforgeeks.org/java-string-join-examples/
+The java.lang.string.join() method concatenates the given elements with the delimiter and returns the concatenated string
+
+class Gfg1 {
+    public static void main(String args[])
+    {
+        // delimiter is "<" and elements are "Four", "Five", "Six", "Seven"
+        String gfg1 = String.join(" < ", "Four", "Five", "Six", "Seven");
+
+        System.out.println(gfg1);
+    }
+}
+
+Four < Five < Six < Seven
