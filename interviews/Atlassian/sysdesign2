@@ -1,0 +1,134 @@
+https://chatgpt.com/c/b896a3b9-9e5c-4b56-987a-e9430b877be2
+
+We are working on a clone of Facebook. We want to add a numeric count to every post showing how many friends the post's author has at the time of viewing the post, like this:
+
+```
+Marie McWilliams (105 friends)
+I had a great day today, feeling good!
+```
+
+Our database has two tables:
+
+```
+USER
+  'user_id' (primary key)
+  'name'
+  'created_date'
+
+USER_RELATIONSHIP
+  'friendship_id' (primary key, unique to each relationship)
+  'user1_id' (indexed)
+  'user2_id' (indexed)
+  'start_date'
+```
+
+Focusing on the database, how would you implement the friend-count feature? Note we will soon be more popular than Facebook, so the solution needs to scale.
+
+
+We are working on a clone of Google Docs.
+
+The software has the following features and limitations:
+
+* Multiple users may work on a single document at the same time.
+* A document must be handled by a single server, no matter how many users are using it.
+* We have a fixed number of servers which will be sufficient to handle our expected load, if used properly.
+
+Our load balancer uses a round-robin system to permanently assign documents to each server, so each server will have an equal number of documents.
+
+Do you have any concerns about this load balancing system?
+
+
+
+Which consistency model is more appropriate for each of these applications: strong consistency, or eventual consistency? Why?
+
+- An API call that needs to respond within 20 milliseconds, used to retrieve metadata about a video stream. The metadata includes things like the author name, rating, and view count.
+
+- A web analytics platform recording every single click on a popular web page.
+
+- A banking system that makes deposits and payments to checking accounts.
+
+---------------------------------------------------------------------------------------------------------------
+
+
+We have a distributed system that allows users to "e-sign" legal documents. A document may need hundreds of signatures, and after it's fully signed, the owner gets a notification. We had a bug for a month that made about half of the notifications fail.
+
+We have two pieces of information:
+
+- A database that tracks documents and their status: fully signed (with the completion date/time) or not.
+- Flat-file logs from 500 production servers. The logs only track the document IDs for successfully sent notifications, failed attempts are missing.
+
+Now that the bug is fixed, how can we find all the missed notifications? The service handles billions of documents daily, so we need a scalable solution.
+
+
+---------------------------------------------------------------------------------------------------------------
+Our company has suffered a security breach, and the credit card numbers of millions of our users were exposed.
+
+We've built a cascading and distributed pipeline to notify the users about the problem.
+
+```
+                                 +--+
+                                 |G |
+                             +-->|25|
+                             |   +--+
++--+       +--+       +--+   |
+|A |       |B |       |C |   |
+|50| ----->|30| -+--->|30| -->
++--+       +--+  |    +--+   |   +--+       +--+
+                 |           |   |E |       |F |
+                 |    +--+   +-->|10| ----->|20|
+                 +--->|D |       +--+       +--+
+                      |90|
+                      +--+
+```
+
+* The number below each stage of the graph shows how many records it can process per second.
+* A record is considered processed after it has gone through every single step of the pipeline.
+
+What is the maximum throughput of this pipeline, as a whole?
+
+Solution:
+---------
+To determine the maximum throughput of the entire pipeline, we need to find the bottleneck in the process. The bottleneck is the stage or stages in the pipeline that have the lowest throughput capacity and hence determine the overall capacity of the pipeline.
+
+Here's the pipeline diagram with the throughput capacities labeled:
+To find the overall maximum throughput of the pipeline, let's analyze the flow of records through each stage:
+
+Initial Stages (A, B, C, D)
+
+A can process 50 records per second and sends them to B.
+B can process 30 records per second and sends them to both C and D.
+Since B sends records to both C and D, we need to consider both paths separately.
+Path B -> C -> G
+
+C can process 30 records per second and sends them to G.
+G can process 25 records per second.
+Since G is the slowest component in this path, the throughput of the path B -> C -> G is limited to 25 records per second.
+
+Path B -> D -> E -> F
+
+D can process 90 records per second.
+E can process 10 records per second and sends them to F.
+F can process 20 records per second.
+Since E is the slowest component in this path, the throughput of the path B -> D -> E -> F is limited to 10 records per second.
+
+Now, we combine the throughput of these two paths:
+
+Path B -> C -> G: 25 records per second
+Path B -> D -> E -> F: 10 records per second
+Both paths receive records from B which can handle 30 records per second. The system will balance the records based on the path throughput, so B will divide the records between C and D.
+
+Given that B sends records into two paths:
+
+One path can handle 25 records per second (C -> G).
+The other path can handle 10 records per second (D -> E -> F).
+However, because B can only process 30 records per second and must send records to both paths, we need to see how it splits those records. Since C -> G can handle 25 and D -> E -> F can handle 10, B will send:
+
+25 records per second to C -> G
+5 records per second to D -> E -> F (since 25 + 5 = 30, which matches B's capacity)
+This adjustment ensures B's output is fully utilized.
+
+Ultimately, B's maximum throughput will be the limiting factor because it cannot send more than 30 records per second. Given that it distributes the records appropriately, the actual bottleneck, considering the need to split the processing, is correctly representing the system's effective capacity. However, the actual practical throughput of the entire system will be constrained by the path with the minimal capacity utilized fully within its limits. Here:
+
+Path B -> C -> G: 25 records per second
+Path B -> D -> E -> F: The capacity is still under the practical use since B sends 5 there.
+Maximum throughput of the entire pipeline: 30 records per second.

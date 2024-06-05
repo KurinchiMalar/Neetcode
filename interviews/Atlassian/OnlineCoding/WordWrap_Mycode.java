@@ -1,4 +1,4 @@
-package interviews.Atlassian;
+package interviews.Atlassian.OnlineCoding;
 
 import java.util.ArrayList;
 import java.util.List;

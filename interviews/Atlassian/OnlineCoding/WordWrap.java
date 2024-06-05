@@ -1,4 +1,4 @@
-package interviews.Atlassian;
+package interviews.Atlassian.OnlineCoding;
 
 import java.io.*;
 import java.util.*;
