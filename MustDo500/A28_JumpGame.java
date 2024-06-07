@@ -93,6 +93,8 @@ public class A28_JumpGame {
     My submission : https://leetcode.com/problems/jump-game/submissions/1279186727/
     Greedy approach
         Have a goal post at n-1 and keep reducing the goal post towards 0.
+
+        https://www.youtube.com/watch?v=Yan0cv2cLy8
     */
     /*
      TC : O(n)

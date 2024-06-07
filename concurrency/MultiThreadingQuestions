@@ -1,0 +1,41 @@
+https://www.interviewbit.com/multithreading-interview-questions/
+
+Multithreading - , it is the ability of a CPU to execute multiple threads independently at the same time but share the process resources simultaneously
+Thread -  simplest way to take advantage of multiple CPUs available in a machine. They share the common address space and are independent of each other.
+
+2 ways of implementing thread:
+https://chatgpt.com/c/3d5c0554-4bec-4e22-ba13-b7e5e2189efb
+    1) Extending Thread
+        class Demo extends Thread{
+            public void run(){
+                 System.out.println("Thread is running");
+            }
+            public static void main(String[] args){
+                Demo ob = new Demo();
+                ob.start();
+            }
+
+        }
+
+    2) Implementing Runnable
+
+         class Demo implements Runnable
+         {
+            public void run(){
+                 System.out.println("Thread is running");
+            }
+            public static void main(String[] args){
+                Demo ob = new Demo();
+                Thread t = new Thread(ob);
+                t.start();
+            }
+
+         }
+
+Flexibilty and Reusability using Runnable interface
+ExecutorService executor = Executors.newFixedThreadPool(1);
+executor.execute(new MyRunnable());
+
+
+
+
