@@ -1,0 +1,120 @@
+Requirements:
+
+
+1) Book a ride
+
+2) Onboard a driver
+
+3) Driver accepts the ride
+
+4) User Make a payment
+
+5) History of user's rides
+
+
+Functional Requirements
+
+	Book a ride
+	Maintaining a user profile
+	Maintaining driver profiles
+	Cancel the ride
+
+	Put on waitlist (Peak hours)
+
+Non Functional Requirements
+
+	Read heavy system. (Eventual Consistency)
+	Low Latency
+	Highly available
+	Fault tolerant. (Resilency)
+
+High level
+
+	User --> AppServer --> DB (Us1 , Ride1 , D1) (Cache)
+
+
+1) POST /v1/app/onboard/driver  ------> more meaningful /v1/app/driver/onboard
+		Params : username,location
+				licence
+
+2) GET /v1/app/getAvailableRides
+		Params: location
+		Returns : {Available driver ids}
+
+3) GET /v1/app/driverStatus/id {Async batch process will maintain and update the status of a driver in db}
+
+		Param: driverid
+		Returns: OFFLINE/AVAILABLE to take ride
+
+4) POST /v1/app/book/ride.  ------> more meaningful /v1/app/ride/create
+
+		Params: userid,location{lat,long},authtoken (To prevent DOS)
+		Return: rideid
+
+5) POST /v1/app/rideid/cancel
+
+		Params:rideid, authtoken
+
+
+		User --> LoadBalancer(Req Q) --> 1) DriverOnboardingService
+										 2) RideBookingService
+										 3) UserRegistration
+
+Velachery {D4,D5} (Redis)-> Cache the proximal drivers at most frequently requested location.
+										 /v1/app/book/ride -> RideBookingService -->
+										 a)ProximityService (Returns the closest drivers)
+										 b) Fetch driver info and availabilty from db
+										 c) PaymentService (PayPal, UPI)
+										 d) All successful payments, Create a ride id (user_id, driver_id, ride_id, rideStatus = INPROGRESS)
+										 	driverStatus = BUSY
+
+										 e) Once user completes the ride
+										 		driver_status = AVAILABLE
+										 		ride_status = COMPLETED.
+
+USER_DB
+userid
+location
+...
+
+DRIVER_DB
+driverid
+location
+license
+pincode
+status (AVAILABLE/BOOKED)
+...
+
+RIDE_DB
+rideid
+driverid
+userid
+status (BOOKED/INPROGRESS/CANCEL/COMPLETED) -- Prebooking (Booked)
+---------
+
+
+
+
+Read through:
+https://www.geeksforgeeks.org/system-design-of-uber-app-uber-system-architecture/
+
+
+Video on uber design
+https://www.youtube.com/watch?v=umWABit-wbk
+
+Rest API syntax
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -35,7 +35,94 @@ https://chatgpt.com/c/3d5c0554-4bec-4e22-ba13-b7e5e2189efb
 Flexibilty and Reusability using Runnable interface
 ExecutorService executor = Executors.newFixedThreadPool(1);
 executor.execute(new MyRunnable());
+--------------------------------------------------------------------------------
+7. How can we create daemon threads?
+ setDaemon(true).
+
+        if(Thread.currentThread().isDaemon())
+        {
+            System.out.println(getName() + " is Daemon thread");
+        }
+        else
+        {
+            System.out.println(getName() + " is User thread");
+        }
+        DaemonThread t1 = new DaemonThread("t1");
+        t1.setDaemon(true);
+But one can only call the setDaemon() method before start() method otherwise it will definitely throw IllegalThreadStateException as shown below:
+--------------------------------------------------------------------------------
+8. What are the wait() and sleep() methods?
+
+wait()
+    non-static method
+     current thread to wait and go to sleep until some other threads call the notify () or notifyAll()
+     It simply releases the lock and is mostly used for inter-thread communication.
+      It is defined in the object class,
+      and should only be called from a synchronized context.
+
+      synchronized(monitor)
+      {
+      monitor.wait();       Here Lock Is Released by Current Thread
+      }
 
 
+sleep()
 
+     static method
+      pauses or stops the execution of the current thread for some specified period.
+       It doesn’t release the lock
+       It is defined in thread class,
+        and no need to call from a synchronized context
 
+--------------------------------------------------------------------------------
+10. Why wait(), notify(), and notifyAll() methods are present in Object class?
+
+Every object has a monitor that allows the thread to hold a lock on the object.
+But the thread class doesn't contain any monitors
+
+Thread usually waits for the object’s monitor (lock) by calling the wait() method on an object,
+ and notify other threads that are waiting for the same lock using notify() or notifyAll() method.
+  Therefore, these three methods are called on objects only and allow all threads to communicate with each that are created on that object.
+
+--------------------------------------------------------------------------------
+11. What is Runnable and Callable Interface? Write the difference between them.
+Both the interfaces are generally used to encapsulate tasks that are needed to be executed by another thread.
+
+Runnable ---> doesnt return result therefore cannot throw checked exception
+Callable --> returns result and can throw exception
+
+public interface Runnable
+{
+  public abstract void run();
+}
+public interface Callable<V>
+{
+V call() throws Exception;
+}
+
+--------------------------------------------------------------------------------
+13. Explain thread pool?
+
+To create the thread pools, java.util.concurrent.Executors class usually provides factory methods.
+--------------------------------------------------------------------------------
+14. What’s the purpose of the join() method?
+join() method is generally used to pause the execution of a current thread
+    unless and until the specified thread on which join is called is dead or completed.
+To stop a thread from running until another thread gets ended, this method can be used.
+It joins the start of a thread execution to the end of another thread’s execution.
+It is considered the final method of a thread class.
+
+--------------------------------------------------------------------------------
+15. What do you mean by garbage collection?
+        . It uses several GC algorithms among which the popular one includes Mark and Sweep.
+        three phases i.e., marking, deletion, and compaction/copying.
+--------------------------------------------------------------------------------
+17. Explain volatile variables in Java?
+
+    address the visibility of changes to variables in multithreaded programming.
+    This keyword cannot be used with classes and methods, instead can be used with variables.
+     It is simply used to achieve thread-safety.
+    If you mark any variable as volatile,
+    then all the threads can read its value directly from the main memory rather than CPU cache, so that each thread can get an updated value of the variable.
+
+--------------------------------------------------------------------------------
