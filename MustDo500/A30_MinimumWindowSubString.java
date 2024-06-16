@@ -102,6 +102,18 @@ public class A30_MinimumWindowSubString {
                         Exclude the left most character of the current window and search for it in the rest.
 
      */
+    /*
+    https://www.geeksforgeeks.org/find-the-smallest-window-in-a-string-containing-all-characters-of-another-string/
+
+    Readable code here
+    https://chatgpt.com/c/3fb4cd4a-92c2-4ff7-8c00-2343936b2a50
+     */
+    /*
+    my submission : https://leetcode.com/problems/minimum-window-substring/submissions/1289760529/
+    TC : O(m + n)
+        // O(n) for building tmap, O(m) for sliding window
+    SC : O(k) //  where k is the number of unique characters in t
+     */
 
     public String minWindow_SlidingWindow(String s, String t){
         if(s == null || s.isEmpty()) return "";
@@ -109,14 +121,55 @@ public class A30_MinimumWindowSubString {
         int tLen = t.length();
         if(sLen < tLen) return ""; // cannot form
 
-        Map<Character,Integer> targetMap = new HashMap<>()
+        Map<Character,Integer> targetMap = new HashMap<>();
         // Required chars map
-        for(Character ch: t.toCharArray()){
-            targetMap.put(ch,targetMap.getOrDefault(ch,))
+        for(Character ch: t.toCharArray()){ //--------------------------------------------------------- O(n)
+            targetMap.put(ch,targetMap.getOrDefault(ch,0)+1);
         }
 
+        int required = targetMap.size(); // unique chars
+        int formed = 0; // formed so far
+        int left = 0;
+        int right = 0;
+        Map<Character,Integer> curWindowMap = new HashMap<>();
 
+        int[] result = new int[]{-1,0,0}; // minWindowLength, left,right
+        while(right < sLen){ //---------------------------------------------------------  O(m)
 
+            char ch = s.charAt(right);
+            curWindowMap.put(ch,curWindowMap.getOrDefault(ch,0)+1);
+
+            // ch is in targetMap and the freq matches in curWindow
+            if(targetMap.containsKey(ch) && curWindowMap.get(ch).intValue() == targetMap.get(ch).intValue()){
+                formed++;
+            }
+
+            // if we have formed a substring with all chars in target Already
+            // try shrinking from left to get a better result
+            while( left <= right && formed == required ){ //---------------------------------------------------------  O(m)
+                // got a window so compare the length
+
+                if(result[0] == -1 || (right-left+1) < result[0]){ // this is a better window
+                    result[0] = right-left+1;
+                    result[1] = left;
+                    result[2] = right;
+                }
+
+                // check for better window excluding left
+                char lch = s.charAt(left);
+                // Adjust formed and curWindowMap accordingly
+                curWindowMap.put(lch,curWindowMap.getOrDefault(lch,0)-1);
+                if(targetMap.containsKey(lch) && curWindowMap.get(lch).intValue() < targetMap.get(lch).intValue()){
+                    formed--;
+                }
+                // look for a better window
+                left++;
+            }
+            // keep expandin right
+            right++;
+        }
+
+        return s.substring(result[1],result[2]+1);
 
     }
 
@@ -127,6 +180,8 @@ public class A30_MinimumWindowSubString {
         System.out.println(ob.minWindow_BruteForce("a","a"));
         System.out.println(ob.minWindow_BruteForce("a","aa"));
         System.out.println("****************** Optimal **********************");
-
+        System.out.println(ob.minWindow_SlidingWindow("ADOBECODEBANC","ABC"));
+        System.out.println(ob.minWindow_SlidingWindow("a","a"));
+        System.out.println(ob.minWindow_SlidingWindow("a","aa"));
     }
 }
