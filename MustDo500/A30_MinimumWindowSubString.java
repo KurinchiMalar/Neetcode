@@ -117,6 +117,8 @@ public class A30_MinimumWindowSubString {
 
     public String minWindow_SlidingWindow(String s, String t){
         if(s == null || s.isEmpty()) return "";
+        if(t == null || t.isEmpty()) return "";
+
         int sLen = s.length();
         int tLen = t.length();
         if(sLen < tLen) return ""; // cannot form
@@ -169,7 +171,7 @@ public class A30_MinimumWindowSubString {
             right++;
         }
 
-        return s.substring(result[1],result[2]+1);
+        return result[0]==Integer.MAX_VALUE?"":s.substring(result[1],result[2]+1);
 
     }
 
