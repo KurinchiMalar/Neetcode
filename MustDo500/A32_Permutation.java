@@ -29,7 +29,7 @@ Constraints:
 
 All the integers of nums are unique.
  */
-public class A31_Permutation {
+public class A32_Permutation {
 
     public void backTrack(int[] nums, List<Integer> curList, List<List<Integer>> result, int n, boolean[] visited){
 
@@ -115,7 +115,7 @@ public class A31_Permutation {
 
 
         public static void main(String[] args) {
-        A31_Permutation ob = new A31_Permutation();
+        A32_Permutation ob = new A32_Permutation();
         System.out.println("**************** Using visited map - extra space ****************");
         System.out.println(ob.permute_UsingExtraSpace(new int[]{1,2,3}));
         System.out.println(ob.permute_UsingExtraSpace(new int[]{0,1}));
