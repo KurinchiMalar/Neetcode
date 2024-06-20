@@ -1,0 +1,26 @@
+
+Companywise
+https://github.com/krishnadey30/LeetCode-Questions-CompanyWise
+
+
+
+system Design (Arpit Bhayani)
+https://youtube.com/playlist?list=PLsdq-3Z1EPT27BuTnJ_trF7BsaTpYLqst&si=4ixopS2PWgveqCsA
+https://newsletter.systemdesign.one/p/idempotent-api
+
+
+https://pplearn.udemy.com/course/system_design_lld_hld/learn/lecture/41932768#overview
+
+
+System Design (LLD /HLD) Shreyansh  (LATER)
+https://pplearn.udemy.com/course/system_design_lld_hld/learn/lecture/41932768#overview
+
+
+Java Shreyansh
+https://pplearn.udemy.com/course/java_basics_to_advanced/learn/lecture/41998128#overview
+
+Kafka blog
+https://vivekbansal.substack.com/p/kafka-basics
+
+curious engineer blog
+https://vivekbansal.substack.com/p/mysql-vs-postgresql-indexing
