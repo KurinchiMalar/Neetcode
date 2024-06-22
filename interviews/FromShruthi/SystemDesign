@@ -1,0 +1,36 @@
+For drawing
+
+MAC : excelidraw
+windows : draw.io
+
+How to pass [system design interviews].
+
+Learn these 9 case studies:
+
+
+9) How PayPal Was Able to Support a Billion Transactions per Day With Only 8 Virtual Machines:
+https://newsletter.systemdesign.one/p/actor-model
+
+8) How Uber Computes ETA at Half a Million Requests per Second:
+https://newsletter.systemdesign.one/p/uber-eta
+
+7) How YouTube Was Able to Support 2.49 Billion Users With MySQL:
+https://newsletter.systemdesign.one/p/vitess-mysql
+
+6) How Uber Finds Nearby Drivers at 1 Million Requests per Second:
+https://newsletter.systemdesign.one/p/how-does-uber-find-nearby-drivers
+
+5) How Stripe Prevents Double Payment Using Idempotent API:
+https://newsletter.systemdesign.one/p/idempotent-api
+
+4) How Cloudflare Supports 55 Million Requests per Second With 15 Postgres Clusters:
+https://newsletter.systemdesign.one/p/postgresql-scalability
+
+3) How Amazon S3 Achieves 99.999999999% Durability:
+https://newsletter.systemdesign.one/p/amazon-s3-durability
+
+2) How Tinder Scaled to 1.6 Billion Swipes per Day:
+https://newsletter.systemdesign.one/p/tinder-architecture
+
+1) How to Scale an App to 10 Million Users on AWS:
+https://newsletter.systemdesign.one/p/aws-scale

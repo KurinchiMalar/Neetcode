@@ -1,4 +1,4 @@
-package MustDo500;
+package MustDo500.atlassianAlltime;
 
 import java.util.*;
 
