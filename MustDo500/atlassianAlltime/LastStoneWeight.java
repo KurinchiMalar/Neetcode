@@ -1,4 +1,4 @@
-package interviews.Atlassian.OnlineCoding;
+package MustDo500.atlassianAlltime;
 import java.util.*;
 /*
 https://leetcode.com/problems/last-stone-weight/
