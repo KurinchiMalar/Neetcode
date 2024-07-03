@@ -21,10 +21,10 @@ SC : O(n) recursion stack
 public class MaximumSumSubTree {
     static int result = Integer.MIN_VALUE;
 
-    public static int helper(TreeNode root, int res){
+    public static int helper(TreeNode root){
         if(root == null) return 0;
 
-        int curSum = root.val + helper(root.left,res) + helper(root.right,res);
+        int curSum = root.val + helper(root.left) + helper(root.right);
         //result = Math.max(curSum,result);
         result = Math.max(curSum,result);
         System.out.println("Result: "+result);
@@ -33,7 +33,7 @@ public class MaximumSumSubTree {
     }
     public static int findLargestSubtreeSum(TreeNode root) {
         if(root == null) return 0;
-        helper(root,result);
+        helper(root);
         return result;
     }
 
