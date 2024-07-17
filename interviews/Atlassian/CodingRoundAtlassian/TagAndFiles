@@ -1,0 +1,122 @@
+// file1.txt (size: 100)
+// file2.txt (size: 200) in collection "collection1"
+// file3.txt (size: 200) in collection "collection1"
+// file4.txt (size: 300) in collection "collection2"
+// file5.txt (size: 10)
+
+Output
+// file size = 810
+// collection1  (top n collections based on filesize)
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class File {
+    //int id;
+    String name;
+    int size;
+    File(String name, int size){
+        //this.id = id;
+        this.name = name;
+        this.size = size;
+    }
+}
+
+class Tag {
+    String tagName;
+    List<File> files;
+    int size;
+    Tag(String tagName, List<File> files){
+        this.tagName = tagName;
+        this.files = new ArrayList<>();
+    }
+
+    public int getSize(){
+        //int curTagSize = 0;
+        if(files == null || files.isEmpty()) return 0;
+
+        for(File file: files){
+            this.size += file.size;
+        }
+
+        return this.size;
+    }
+}
+// Max Heap
+class TagComparator implements Comparator<Tag>{
+    public int compare(Tag t1, Tag t2){
+        if(t1.size > t2.size){
+            return -1;
+        }else if(t1.size < t2.size){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+}
+
+public class Solution {
+    PriorityQueue<Tag> pq = new PriorityQueue<>(new TagComparator()); // Max Heap of Tag based on the size
+    public String getTopNTags(int n){
+
+        if(pq == null || pq.isEmpty()|| pq.size() < n){
+            return "";
+        }
+
+        while(!pq.isEmpty() && n > 0){
+
+        }
+
+
+    }
+
+    public int getFileSizeSum(List<File> files){
+        int totalSize = 0;
+        if(files == null || files.isEmpty())return 0;
+        for(File file:files){
+            totalSize += file.size;
+        }
+        return totalSize;
+    }
+
+
+
+    public static void main(String[] args) {
+        Solution ob = new Solution();
+        // File size is in KBs (Assumed)
+        File f1 = new File("file1.txt",10);
+        File f2 = new File("file2.txt",20);
+
+        List<File> tag1List = new ArrayList<File>();
+        tag1List.add(f1);
+        tag1List.add(f2);
+        Tag collectionTag1 = new Tag("collectionTag1",tag1List);
+        File f3 = new File("file2.txt",20);
+        List<File> tag2List = new ArrayList<File>();
+        tag2List.add(f3);
+        Tag collectionTag2 = new Tag("collectionTag2",tag2List);
+
+        Tag collectionTag3 = new Tag("",tag2List);
+
+
+
+        List<File> totalfiles = new ArrayList<File>();
+        totalfiles.add(f1);
+        totalfiles.add(f2);
+        totalfiles.add(f3);
+        System.out.println(ob.getFileSizeSum(totalfiles));
+
+        //if collectionTag.tagName is empty , we will not add to priority queue. Addition to PQ should be moved to a seprate method.
+        ob.pq.add(collectionTag1);
+        ob.pq.add(collectionTag2);
+
+
+
+
+
+    }
+}

@@ -10,15 +10,21 @@ https://newsletter.systemdesign.one/p/idempotent-api
 
 
 https://pplearn.udemy.com/course/system_design_lld_hld/learn/lecture/41932768#overview
+-------------------------------------------------------
 
-
-System Design (LLD /HLD) Shreyansh  (LATER)
+System Design (LLD /HLD) Shreyansh  (INPROGRESS)
 https://pplearn.udemy.com/course/system_design_lld_hld/learn/lecture/41932768#overview
 
-
-Java Shreyansh
+Java Shreyansh (Memory management excellent explanation)
 https://pplearn.udemy.com/course/java_basics_to_advanced/learn/lecture/41998128#overview
 
+Design patterns Shreyansh
+https://gitlab.com/shrayansh8/interviewcodingpractise/-/tree/main/src/LowLevelDesign/DesignPatterns
+
+Interview practice Shreyansh git repo
+https://gitlab.com/shrayansh8/interviewcodingpractise/-/tree/main/src?ref_type=heads
+
+-------------------------------------------------------
 Kafka blog
 https://vivekbansal.substack.com/p/kafka-basics
 
