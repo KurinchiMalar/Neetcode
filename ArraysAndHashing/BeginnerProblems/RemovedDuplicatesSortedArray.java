@@ -97,11 +97,34 @@ public class RemovedDuplicatesSortedArray {
 
     }
 
+    /*
+    TC : O(n)
+    SC : O(1)
+     */
+    public static int removeDuplicatesSortedNeat(int[] nums) {
+
+        int k = 0;
+
+        for( int n : nums){
+            // first element is anyways need in result (k < 1)
+            // If n > nums[k - 1], it means n is not the second duplicate (or more) of the same value, so it is safe to add it.
+            if(k < 1 || n > nums[k-1]){
+                nums[k] = n;
+                k++;
+            }
+        }
+        return k;
+    }
+
+
     public static void main(String[] args) {
         System.out.println(removeDuplicatesUsingExtraSpace(new int[]{1,1,2}));
         System.out.println(removeDuplicatesUsingExtraSpace(new int[]{0,0,1,1,1,2,2,3,3,4}));
 
         System.out.println(removeDuplicatesSortedEfficient(new int[]{1,1,2}));
         System.out.println(removeDuplicatesSortedEfficient(new int[]{0,0,1,1,1,2,2,3,3,4}));
+
+        System.out.println(removeDuplicatesSortedNeat(new int[]{1,1,2}));
+        System.out.println(removeDuplicatesSortedNeat(new int[]{0,0,1,1,1,2,2,3,3,4}));
     }
 }
