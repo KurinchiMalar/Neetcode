@@ -22,6 +22,10 @@ nums[i] is either 0 or 1.
  */
 public class MaxConsecutiveOnes {
 
+    /*
+    TC : O(n)
+    SC : O(1)
+     */
     public int findMaxConsecutiveOnes(int[] nums) {
         if(nums == null ) return 0;
         int maxCount = Integer.MIN_VALUE;
