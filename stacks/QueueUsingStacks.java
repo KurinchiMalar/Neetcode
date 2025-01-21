@@ -3,6 +3,17 @@ package stacks;
 https://leetcode.com/problems/implement-queue-using-stacks/description/
  */
 
+/*
+The expensive operation of moving elements from s1 to s2 happens only when s2 is empty.
+Once moved, multiple pop() or peek() calls can be made in O(1)
+
+O(1) time until s2 is exhausted.
+Thus, the overall cost is spread across multiple operations, making the amortized time complexity O(1)
+
+
+TC : O(1)
+SC : O(n)
+ */
 import java.util.Stack;
 
 class MyQueue {
