@@ -38,7 +38,7 @@ public class PalindromeNumber {
 
         while(temp != 0){
             //digit  = temp % 10;
-            reversedX = reversedX * 10 + (int)(temp % 10);
+            reversedX = reversedX * 10 + (temp % 10);
             temp = temp / 10;
         }
         return (reversedX == x);
@@ -66,7 +66,7 @@ public class PalindromeNumber {
 
         // this time reverse just half the number   eg) x = 1221 ,  (reversed = 12 , x = 12)
         while(x > reversedX){
-            reversedX = reversedX * 10 +(int) (x % 10);
+            reversedX = reversedX * 10 + (x % 10);
             x = x / 10;
         }
         return (x == reversedX) || (x == reversedX / 10);

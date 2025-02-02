@@ -29,10 +29,7 @@ public class TreeNode {
 
     public static boolean isLeaf(TreeNode root){
         if(root == null)return false;
-        if(root.left == null && root.right == null){
-            return true;
-        }
-        return false;
+        return root.left == null && root.right == null;
     }
     public static void printCurrentLevel(TreeNode root, int level){
         if(root == null)return;

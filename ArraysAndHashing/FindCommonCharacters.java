@@ -88,8 +88,8 @@ public class FindCommonCharacters {
 
     public static void main(String[] args) {
         FindCommonCharacters ob = new FindCommonCharacters();
-        System.out.println(ob.commonChars(new String[]{"bella","label","roller"}));
-        System.out.println(ob.commonChars(new String[]{"cool","lock","cook"}));
+        System.out.println(commonChars(new String[]{"bella","label","roller"}));
+        System.out.println(commonChars(new String[]{"cool","lock","cook"}));
 
     }
 }

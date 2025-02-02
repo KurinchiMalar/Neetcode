@@ -104,7 +104,7 @@ public class A8_MedianOfTwoSortedArrays {
             // or get max of left for odd length combined array size.
             if(maxLeftX <= minRightY && maxLeftY <= minRightX){
                 if((n1 + n2)%2 != 0){ // odd
-                    return (double) Math.max(maxLeftX,maxLeftY);
+                    return Math.max(maxLeftX,maxLeftY);
                 }else{ // even
                     return (double)(Math.max(maxLeftX,maxLeftY) + Math.min(minRightX,minRightY)) / 2;
                 }

@@ -77,8 +77,8 @@ public class A4_TrappingRainWater {
         }
         return result;
     }
-        public static void main(String args[]) {
-        int arr[] = {0,1,0,2,1,0,1,3,2,1,2,1};
+        public static void main(String[] args) {
+        int[] arr = {0,1,0,2,1,0,1,3,2,1,2,1};
         System.out.println("Trapped water : " + trap(arr));
         System.out.println("Trapped water 2Pointer approach: " + trapEfficient_Using2Pointers(arr));
 

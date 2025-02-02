@@ -95,6 +95,6 @@ public class ClimbingStairs {
 
     public static void main(String[] args){
         ClimbingStairs ob = new ClimbingStairs();
-        System.out.println(String.valueOf(ob.climbStairs(5)));
+        System.out.println(ob.climbStairs(5));
     }
 }

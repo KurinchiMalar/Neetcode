@@ -69,7 +69,7 @@ public class SubSetSumEqualsKExists {
         if( i < 0 || i >= nums.length) return false; // boundary
 
         if(dp[i][target] != -1) {
-            return dp[i][target] == 1 ? true:false;  // avoids unnecessary recursion
+            return dp[i][target] == 1;  // avoids unnecessary recursion
         }
 
         if(target == 0){ // found subset    BaseCase 1
@@ -84,7 +84,7 @@ public class SubSetSumEqualsKExists {
 
         //Recurrence
         boolean notTake = iSExistsSubset_TD(i-1,target,nums,dp);
-        boolean take = (target >= nums[i]) ? iSExistsSubset_TD(i-1,target-nums[i],nums,dp) : false;
+        boolean take = target >= nums[i] && iSExistsSubset_TD(i - 1, target - nums[i], nums, dp);
 
         dp[i][target] = (notTake || take) ? 1 : 0 ;
         return notTake || take;
@@ -140,12 +140,11 @@ public class SubSetSumEqualsKExists {
     public boolean isExistsSubset_TD1(int i,int target,int n, int[] nums,int[][] dp){
 
         if(i < 0 || i >= n) return false;
-        if(dp[i][target] != -1) return (dp[i][target] == 1 )? true:false;
+        if(dp[i][target] != -1) return dp[i][target] == 1;
 
         if(i == 0){ // single elem
             if(nums[i] == 0 && target == 0)return true;
-            if(target == 0 || nums[i] == target) return true;
-            return false;
+            return target == 0 || nums[i] == target;
         }
 
         boolean notTake = isExistsSubset_TD1(i-1,target,n,nums,dp);

@@ -160,9 +160,9 @@ public class A19_1_LongestSubArrayWithSumK_Positives {
         System.out.println(ob.getLongestSubarray_Hashing(new int[]{2, 3, 5, 1, 9},10));
         System.out.println(ob.getLongestSubarray_Hashing(new int[]{1,2,1,2,1},3));
         System.out.println("************ Using 2Pointer Greedy **********************************");
-        System.out.println(ob.getLongestSubarray_2PointerGreedy(new int[]{1, 2, 1, 0, 1 },4));
-        System.out.println(ob.getLongestSubarray_2PointerGreedy(new int[]{2, 3, 5, 1, 9},10));
-        System.out.println(ob.getLongestSubarray_2PointerGreedy(new int[]{1,2,1,2,1},3));
+        System.out.println(getLongestSubarray_2PointerGreedy(new int[]{1, 2, 1, 0, 1 },4));
+        System.out.println(getLongestSubarray_2PointerGreedy(new int[]{2, 3, 5, 1, 9},10));
+        System.out.println(getLongestSubarray_2PointerGreedy(new int[]{1,2,1,2,1},3));
         }
 
 

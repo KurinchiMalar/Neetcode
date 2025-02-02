@@ -39,7 +39,7 @@ public class ZeroOneKnapSack {
             }
         }
 
-        int notTake = 0 + maxValPossible_Recursion(i-1,W,weights,values); // if we dont take current weight, capacity of bag doesn't change.
+        int notTake = maxValPossible_Recursion(i - 1, W, weights, values); // if we dont take current weight, capacity of bag doesn't change.
         int take = Integer.MIN_VALUE;
         if(weights[i] <= W){
             take = values[i] + maxValPossible_Recursion(i-1,W-weights[i],weights,values);
@@ -64,7 +64,7 @@ public class ZeroOneKnapSack {
             dp[i][W] = (weights[0] <= W) ? values[0]:0;
             return dp[i][W];
         }
-        int notTake = 0 + maxValPossible_TopDown(i-1,W,weights,values,dp); // if we dont take current weight, capacity of bag doesn't change.
+        int notTake = maxValPossible_TopDown(i - 1, W, weights, values, dp); // if we dont take current weight, capacity of bag doesn't change.
         int take = Integer.MIN_VALUE;
         if(weights[i] <= W){ // take only if current weight is eligible to put in sack
             take = values[i] + maxValPossible_TopDown(i-1,W-weights[i],weights,values,dp);

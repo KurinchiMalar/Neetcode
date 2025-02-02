@@ -58,7 +58,7 @@ public class MinimumCoins_CoinChange {
             return MAX; // to avoid overflow Intmax + 1 + 1 etc.
         }
 
-        int notTake = 0 + coinChangeRecursion(i-1,amount,n,coins);
+        int notTake = coinChangeRecursion(i - 1, amount, n, coins);
         int take = MAX;
         if(coins[i] <= amount){
             take = 1 + coinChangeRecursion(i,amount-coins[i],n,coins); // same elem can be reused. (Infinite supply of coins)

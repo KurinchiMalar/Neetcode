@@ -120,10 +120,7 @@ class ValidAnagram {
         for(Character ch:t.toCharArray()){
             targetSum += ch;
         }
-        if(sourceSum == targetSum){
-            return true;
-        }
-        return false;
+        return sourceSum == targetSum;
     }
 
 

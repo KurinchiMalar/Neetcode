@@ -36,7 +36,7 @@ public class HouseRobber2 {
         int n = nums.length;
         if(n <= 0) return 0;
         if(n == 1) return nums[0];
-        if(n == 2) return Math.max(nums[0],nums[1]);;
+        if(n == 2) return Math.max(nums[0],nums[1]);
 
         int ans1 = maxNonAdjSum(nums,0,nums.length-2,nums.length-1); // leaving the last elem
         int ans2 = maxNonAdjSum(nums,1,nums.length-1,nums.length-1); // including the last elem

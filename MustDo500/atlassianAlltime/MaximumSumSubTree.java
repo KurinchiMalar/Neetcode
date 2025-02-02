@@ -47,7 +47,7 @@ public class MaximumSumSubTree {
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(7);
 
-        System.out.println(ob.findLargestSubtreeSum(root));// Opt 28
+        System.out.println(findLargestSubtreeSum(root));// Opt 28
         result = Integer.MIN_VALUE;
         TreeNode root1 = new TreeNode(1);
         root1.left = new TreeNode(-2);
@@ -56,7 +56,7 @@ public class MaximumSumSubTree {
         root1.left.right = new TreeNode(5);
         root1.right.left = new TreeNode(-6);
         root1.right.right = new TreeNode(2);
-        System.out.println(ob.findLargestSubtreeSum(root1));// Opt 7
+        System.out.println(findLargestSubtreeSum(root1));// Opt 7
 
     }
 }

@@ -63,7 +63,7 @@ public class ShortestPathDjikstra {
         newGraph.addWeightedEdge(4,6,9);
         newGraph.addWeightedEdge(5,6,7);
 
-        System.out.println(newGraph.toString());
+        System.out.println(newGraph);
         System.out.println("Djiktra from source : A ");
         djikstra(newGraph);
                 /*

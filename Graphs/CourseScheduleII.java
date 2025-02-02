@@ -72,7 +72,7 @@ class CourseScheduleII {
         }
 
         while(!queue.isEmpty()){
-            int course = (int)queue.poll();
+            int course = queue.poll();
             result.add(course);
             for(int i=0 ; i < graph[course].size(); i++){
                 int p = (int)graph[course].get(i);

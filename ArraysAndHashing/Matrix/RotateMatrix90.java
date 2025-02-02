@@ -5,7 +5,7 @@ public class RotateMatrix90 {
 
 
     // Function to print the matrix
-    static void displayMatrix(int mat[][])
+    static void displayMatrix(int[][] mat)
     {
         int N = mat.length;
         for (int i = 0; i < N; i++) {
@@ -17,7 +17,7 @@ public class RotateMatrix90 {
         System.out.print("\n");
     }
 
-    static int[][] reverseGivenRow(int i, int mat[][])
+    static int[][] reverseGivenRow(int i, int[][] mat)
     {
         int N = mat.length;
         int start = 0;
@@ -77,7 +77,7 @@ public class RotateMatrix90 {
     /* Driver code*/
     public static void main(String[] args)
     {
-        int mat[][] = { { 1, 2, 3, 4 },
+        int[][] mat = { { 1, 2, 3, 4 },
                 { 5, 6, 7, 8 },
                 { 9, 10, 11, 12 },
                 { 13, 14, 15, 16 } };
@@ -86,7 +86,7 @@ public class RotateMatrix90 {
         int[][] result = new int[N][N];
         //displayMatrix(reverseGivenRow(0,mat));
         displayMatrix(rotateMatrixExtraSpace(N, mat,result));
-        int mat1[][] = { { 1, 2, 3, 4 },
+        int[][] mat1 = { { 1, 2, 3, 4 },
         { 5, 6, 7, 8 },
         { 9, 10, 11, 12 },
         { 13, 14, 15, 16 } };

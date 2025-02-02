@@ -93,7 +93,7 @@ public class WildCardMatching {
         }
         if(i < 0) return false;
         if(dp[i][j] != -1){
-            return (dp[i][j] == 1) ? true : false;
+            return dp[i][j] == 1;
         }
         if(s1.charAt(i) == s2.charAt(j) || s1.charAt(i) == '?'){
             dp[i][j] = isMatch_TDhelper(i - 1, j - 1, s1, s2, dp) ? 1 : 0;

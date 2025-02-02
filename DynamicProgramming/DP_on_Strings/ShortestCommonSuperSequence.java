@@ -111,7 +111,7 @@ public class ShortestCommonSuperSequence {
         System.out.println("Length of shortest common SuperSeq: "+ ((n1 + n2) - dp[n1][n2]));
         //System.out.println("SuperSeq: "+ getSuperSequence(dp,str1,str2,n1, n2).toString());
 
-        return getSuperSequence(dp,str1,str2,n1, n2).toString() ;
+        return getSuperSequence(dp,str1,str2,n1, n2);
     }
 
     /*

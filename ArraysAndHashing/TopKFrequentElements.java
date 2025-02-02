@@ -158,10 +158,10 @@ class TopKFrequentElements {
         //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1,1,1,2,2,3},2)));// Expected Output: [1,2]
         //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1},1)));// Expected Output: [1]
         //System.out.println(""+Arrays.toString(topKFrequentNlognNaive(new int[]{1,2},2)));// Expected Output: [1,2]
-        System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1,2},2)));// Expected Output: [1,2]
+        System.out.println(Arrays.toString(topKFrequentUsingMaxHeap(new int[]{1, 2}, 2)));// Expected Output: [1,2]
         //System.out.println(""+Arrays.toString(topKFrequentUsingMaxHeap(new int[]{4,1,-1,2,-1,2,3},2)));// Expected Output: [1,2]
-        System.out.println(""+Arrays.toString(topKFrequentEfficient(new int[]{1,1,1,2,2,3},2)));// Expected Output: [1,2]
-        System.out.println(""+Arrays.toString(topKFrequentEfficient(new int[]{1},1)));// Expected Output: [1]
-        System.out.println(""+Arrays.toString(topKFrequentEfficient(new int[]{1,2},2)));// Expec
+        System.out.println(Arrays.toString(topKFrequentEfficient(new int[]{1, 1, 1, 2, 2, 3}, 2)));// Expected Output: [1,2]
+        System.out.println(Arrays.toString(topKFrequentEfficient(new int[]{1}, 1)));// Expected Output: [1]
+        System.out.println(Arrays.toString(topKFrequentEfficient(new int[]{1, 2}, 2)));// Expec
     }
 }

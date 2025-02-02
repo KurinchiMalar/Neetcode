@@ -71,10 +71,7 @@ class GroupAnagrams {
         for(Character ch:t.toCharArray()){
             targetSum += ch;
         }
-        if(sourceSum == targetSum){
-            return true;
-        }
-        return false;
+        return sourceSum == targetSum;
     }
     /*
   Time : O(n) - Single parse of original array
@@ -84,15 +81,15 @@ class GroupAnagrams {
         ArrayList<List<String>> resultList = new ArrayList<List<String>>();
 
         if(strs == null){
-            resultList.add(Arrays.asList(""));
+            resultList.add(List.of(""));
             return resultList;
         }
         if(strs.length == 1){
-            resultList.add(Arrays.asList(strs[0]));
+            resultList.add(Collections.singletonList(strs[0]));
             return resultList;
         }
         HashMap<String,List<String>> hmap = new HashMap<>();
-        hmap.put(strs[0],new ArrayList<String>(Arrays.asList(strs[0])));
+        hmap.put(strs[0],new ArrayList<String>(Collections.singletonList(strs[0])));
         boolean found = false;
         for(int i=1;i < strs.length; i++){
             for(String key:hmap.keySet()){

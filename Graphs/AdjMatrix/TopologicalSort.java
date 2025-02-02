@@ -54,7 +54,7 @@ SC : O(V + E)
         gd1.addDirectedEdge(2,3);
         gd1.addDirectedEdge(3,4);
         gd1.clearVisits();
-        System.out.println(gd1.toString());
+        System.out.println(gd1);
         topoSort(gd1);
         gd1.clearVisits();
 
@@ -80,7 +80,7 @@ SC : O(V + E)
         gd2.addDirectedEdge(1,3);
         gd2.addDirectedEdge(3,5);
         gd2.clearVisits();
-        System.out.println(gd2.toString());
+        System.out.println(gd2);
         System.out.println("TOPOLOGICAL SORT"); // Expected :  B D A C E F G H
         System.out.println();
         topoSort(gd2);

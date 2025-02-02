@@ -46,9 +46,6 @@ public class CourseSchedule1BFS {
                 }
             }
         }
-        if(count == numCourses){
-            return true;
-        }
-        return false;
+        return count == numCourses;
     }
 }

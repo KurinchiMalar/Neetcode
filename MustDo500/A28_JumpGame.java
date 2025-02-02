@@ -41,7 +41,7 @@ public class A28_JumpGame {
         if(index >= n) return false;
         if(index == n-1) return true; // reached goal
         if(dp[index] != -1){
-            return (dp[index] == 1) ? true:false;
+            return dp[index] == 1;
         }
 
         for(int i = 1; i <= nums[index]; i++){
@@ -76,7 +76,7 @@ public class A28_JumpGame {
         for(int i = n-2; i >= 0; i--){
             // for all possible jumps
             for(int j=1 ; j <= nums[i] && (i+j) < n; j++){
-                if(dp[i+j] == true){ // need to boundary check this i+j as well so add this to condition.
+                if(dp[i + j]){ // need to boundary check this i+j as well so add this to condition.
                     dp[i] = true;
                     break; // no need to try further jump possibilities for this index(i)
                 }

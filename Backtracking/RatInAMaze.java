@@ -43,10 +43,7 @@ public class RatInAMaze {
     }
 
     public boolean isSafe(int[][] maze, int row, int col, int M, int N){
-        if(row >= 0 && col >= 0 && row < M && col < N && maze[row][col] == 1){
-            return true;
-        }
-        return false;
+        return row >= 0 && col >= 0 && row < M && col < N && maze[row][col] == 1;
     }
 
     public boolean backtrack(int[][] maze, int row, int col, int M , int N, int[][] visited){
@@ -75,7 +72,7 @@ public class RatInAMaze {
 
     public static void main(String[] args){
         RatInAMaze ob = new RatInAMaze();
-        int maze[][] = { { 1, 0, 0, 0 },
+        int[][] maze = { { 1, 0, 0, 0 },
                          { 1, 1, 0, 1 },
                          { 0, 1, 0, 0 },
                          { 1, 1, 1, 1 } };

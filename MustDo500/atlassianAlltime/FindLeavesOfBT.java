@@ -69,10 +69,7 @@ public class FindLeavesOfBT {
     }
     public boolean isLeaf(TreeNode root){
         // root null is handled in caller
-        if(root.left == null && root.right == null){
-            return true;
-        }
-        return false;
+        return root.left == null && root.right == null;
     }
 
     public void printLeaves(TreeNode root){

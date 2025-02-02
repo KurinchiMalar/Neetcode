@@ -61,7 +61,7 @@ public class CarFleet {
     public static int carFleet(int target, int[] position, int[] speed) {
         CarState[] carStates = new CarState[position.length];
         for(int i=0; i<position.length; i++){
-            carStates[i] = new CarState(target-position[i],speed[i],1.0*((double) (target-position[i])/(double)speed[i]));
+            carStates[i] = new CarState(target-position[i],speed[i], ((double) (target - position[i]) / (double) speed[i]));
         }
 
         // sort in ascending order of distanceFromTarget. Car nearest to target will be at first.

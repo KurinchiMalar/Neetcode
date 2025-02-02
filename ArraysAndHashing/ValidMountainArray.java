@@ -87,8 +87,7 @@ public class ValidMountainArray {
 
         // you can avoid additional condition by handling this in the while condition itself.
         //if(left == right && (left != 0) &&  (left != n-1)) return true;
-        if(left == right) return true;
-        return false;
+        return left == right;
     }
 
     public static void main(String[] args) {

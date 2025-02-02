@@ -71,11 +71,8 @@ public class AllKindsOfPatternsInRecursion {
         //Not Pick
         temp.remove(temp.size()-1);
         sum-=nums[i];
-        if(helperBool(nums, i + 1, n, sum, k, temp)){ // avoiding other recursion calls if the solution is found
-            return true;
-        }
-
-        return false;
+        // avoiding other recursion calls if the solution is found
+        return helperBool(nums, i + 1, n, sum, k, temp);
     }
 
     public void printOnlyOneSubSequenceSumK(int[] nums,int k){

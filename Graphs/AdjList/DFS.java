@@ -51,7 +51,7 @@ public class DFS {
         g.addUndirectedEdge(2,3);
         g.addUndirectedEdge(3,4);
 
-        System.out.println(g.toString());
+        System.out.println(g);
         g.clearVisits();
         // MOST optimized avoids duplicate entries , Works for unconnected graphs as well.
         dfs(g);
@@ -77,7 +77,7 @@ public class DFS {
         g1.addUndirectedEdge(4,5);
         g1.addUndirectedEdge(5,6);
 
-        System.out.println(g1.toString());
+        System.out.println(g1);
         g1.clearVisits();
          // // MOST optimized avoids duplicate entries , Works for unconnected graphs as well.
         dfs(g1);

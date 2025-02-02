@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class DisjointSet {
 
-    private Map<Long, Node> map = new HashMap<>();
+    private final Map<Long, Node> map = new HashMap<>();
 
     class Node {
         long data;
@@ -90,7 +90,7 @@ public class DisjointSet {
         return node.parent;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         DisjointSet ds = new DisjointSet();
         ds.makeSet(1);
         ds.makeSet(2);

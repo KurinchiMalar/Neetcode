@@ -57,10 +57,7 @@ public class A12_NumberOfIslands {
 
     public boolean isSafe(char[][] grid,boolean[][] visited, int row, int col,int m, int n){
 
-        if(row < 0 || row >=m || col < 0 || col >= n || grid[row][col] == '0' || visited[row][col]){
-            return false;
-        }
-        return true;
+        return row >= 0 && row < m && col >= 0 && col < n && grid[row][col] != '0' && !visited[row][col];
     }
     public void bfs(char[][] grid,boolean[][] visited, int row, int col,int m, int n){
 

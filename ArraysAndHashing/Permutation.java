@@ -22,10 +22,7 @@ public class Permutation {
                }
 
             }
-            if(freqmap.isEmpty()){
-                return true;
-            }
-            return false;
+            return freqmap.isEmpty();
         }
 
 

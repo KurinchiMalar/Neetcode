@@ -10,8 +10,8 @@ public class Graph<T> {
             Vertices in a map ( id, Vertex)
     2. property to determine directed or undirected.
  */
-    private List<Edge<T>> allEdges;
-    private Map<Long,Vertex<T>> allVertex;
+    private final List<Edge<T>> allEdges;
+    private final Map<Long,Vertex<T>> allVertex;
     boolean isDirected = false;
 
     public Graph(boolean isDirected){
@@ -89,8 +89,8 @@ class Edge<T>{
     3. has a weight
      */
     private boolean isDirected = false;
-    private Vertex<T> vertex1;
-    private Vertex<T> vertex2;
+    private final Vertex<T> vertex1;
+    private final Vertex<T> vertex2;
     int weight;
 
     public Edge(Vertex<T> vertex1, Vertex<T> vertex2) {
@@ -160,8 +160,8 @@ class Vertex<T>{
      */
     long id; // index
     private T data;
-    private List<Edge<T>> edges = new ArrayList<>();
-    private List<Vertex<T>> adjacentVertex = new ArrayList<>();
+    private final List<Edge<T>> edges = new ArrayList<>();
+    private final List<Vertex<T>> adjacentVertex = new ArrayList<>();
 
     Vertex(long id){
         this.id = id;

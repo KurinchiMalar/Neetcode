@@ -70,7 +70,7 @@ public class KClosestPointsToOrigin {
     public static void main(String[] args){
         KClosestPointsToOrigin ob = new KClosestPointsToOrigin();
         System.out.println(Arrays.deepToString(ob.kClosest(new int[][]{{1,3},{-2,2}},1)));
-        ob.pq.clear();
+        pq.clear();
         System.out.println(Arrays.deepToString(ob.kClosest(new int[][]{{3,3},{5,-1},{-2,4}},2)));
 
 

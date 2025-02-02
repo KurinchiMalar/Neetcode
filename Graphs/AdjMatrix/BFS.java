@@ -53,7 +53,7 @@ public class BFS {
         g.addUndirectedEdge(1,4);
         g.addUndirectedEdge(2,3);
         g.addUndirectedEdge(3,4);
-        System.out.println(g.toString());
+        System.out.println(g);
         bfs(g);
         System.out.println();
         System.out.println("*************************************************");
@@ -74,7 +74,7 @@ public class BFS {
         g1.addUndirectedEdge(2,4);
         g1.addUndirectedEdge(4,5);
         g1.addUndirectedEdge(5,6);
-        System.out.println(g1.toString());
+        System.out.println(g1);
         bfs(g1);
 
 

@@ -80,7 +80,6 @@ public class A34_LetterCombinationsPhoneNumber {
 
         buildPhoneMap();
         StringBuilder sb = new StringBuilder();
-        sb.append("");// currentString in recursion
 
         backTrack(digits, 0, sb, result);
         return result;
@@ -132,7 +131,7 @@ public class A34_LetterCombinationsPhoneNumber {
 
     public List<String> letterCombinations_UsingQueue(String digits) {
 
-        if(digits == null || digits.isEmpty()) return  new ArrayList<>();;
+        if(digits == null || digits.isEmpty()) return  new ArrayList<>();
 
         buildPhoneMap();
 

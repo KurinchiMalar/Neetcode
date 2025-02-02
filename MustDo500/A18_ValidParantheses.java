@@ -33,8 +33,7 @@ public class A18_ValidParantheses {
                     break;
             }
         }
-        if(!stk.isEmpty())return false;
-        return true;
+        return stk.isEmpty();
     }
 
     public static void main(String[] args) {

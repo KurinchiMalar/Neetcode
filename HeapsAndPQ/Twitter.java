@@ -61,7 +61,7 @@ class Twitter {
     private static int timeStamp = 0;
 
     //utility to find if user exists (id, User)
-    private Map<Integer,User> userMap;
+    private final Map<Integer,User> userMap;
 
     class Tweet{
         public int id;

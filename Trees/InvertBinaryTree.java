@@ -24,10 +24,7 @@ SC : O(n)
 package Trees;
 public class InvertBinaryTree {
     public static boolean isLeaf(TreeNode root){
-        if(root.left == null && root.right == null){
-            return true;
-        }
-        return false;
+        return root.left == null && root.right == null;
     }
     public static TreeNode  invertTree(TreeNode root) {
 

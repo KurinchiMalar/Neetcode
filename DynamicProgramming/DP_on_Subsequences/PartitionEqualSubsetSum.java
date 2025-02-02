@@ -49,16 +49,15 @@ public class PartitionEqualSubsetSum {
     public boolean isExistsSubset(int i,int target,int n, int[] nums,int[][] dp){
 
         if(i < 0 || i >= n) return false;
-        if(dp[i][target] != -1) return (dp[i][target] == 1 )? true:false;
+        if(dp[i][target] != -1) return dp[i][target] == 1;
 
         if(i == 0){ // single elem
             if(nums[i] == 0 && target == 0)return true;
-            if(target == 0 || nums[i] == target) return true;
-            return false;
+            return target == 0 || nums[i] == target;
         }
 
         boolean notTake = isExistsSubset(i-1,target,n,nums,dp);
-        boolean take = nums[i] <= target ? isExistsSubset(i - 1, target - nums[i], n, nums, dp):false;
+        boolean take = nums[i] <= target && isExistsSubset(i - 1, target - nums[i], n, nums, dp);
         dp[i][target] = (take || notTake) ? 1 : 0;
         return (take || notTake);
 

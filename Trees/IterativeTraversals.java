@@ -115,7 +115,7 @@ public class IterativeTraversals {
 
 
 
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         // Creating a binary tree and entering
         // the nodes

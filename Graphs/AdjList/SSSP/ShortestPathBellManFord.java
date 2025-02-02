@@ -79,7 +79,7 @@ SC : O(V) // to store the cost from source to all vertices as part of each graph
         newGraph.addWeightedEdge(4,6,9);
         newGraph.addWeightedEdge(5,6,7);
 
-        System.out.println(newGraph.toString());
+        System.out.println(newGraph);
         System.out.println("BellManFord from source : A ");
         bellManFord(newGraph);
                         /*
@@ -111,7 +111,7 @@ Node: G , cost : 14 , Path: A B E G
         newGraph1.addWeightedEdge(3,1,1);
         newGraph1.addWeightedEdge(4,3,-6);
 
-        System.out.println(newGraph1.toString());
+        System.out.println(newGraph1);
         System.out.println("-------------------------------------------------");
         System.out.println("BellManFord from source : A ");
         bellManFord(newGraph1);

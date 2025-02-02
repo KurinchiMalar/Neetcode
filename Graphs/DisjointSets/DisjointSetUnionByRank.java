@@ -47,7 +47,6 @@ public class DisjointSetUnionByRank {
         int ulpV = findUltimateParent(v);
 
         if(ulpU == ulpV ){ // same component , nothing to union
-            return;
         }else if(rankList.get(ulpU) < rankList.get(ulpV)){
             //smaller rank becomes child
             parentList.set(ulpU,ulpV);
@@ -75,10 +74,7 @@ public class DisjointSetUnionByRank {
         }
     }
     public boolean isSameComponent(DisjointSetUnionByRank d,int u, int v){
-        if(d.findUltimateParent(u) == d.findUltimateParent(v)){
-            return true;
-        }
-        return false;
+        return d.findUltimateParent(u) == d.findUltimateParent(v);
     }
 
     public static void main(String[] args){

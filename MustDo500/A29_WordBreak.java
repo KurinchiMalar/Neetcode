@@ -92,8 +92,9 @@ public class A29_WordBreak {
         dp[0] = true; // empty string is breakable
         for(int i = 1 ; i <= n; i++){   // ----------------------------O(n)
             for(int j = 0; j < i ; j++){ // prefix 0 to i-1  // ----------------------------O(i)
-                if(dp[j] == true && wordSet.contains(s.substring(j,i))){ // j to i-1.   {0  .... j ..... i-1} //-------O(k)
+                if (dp[j] && wordSet.contains(s.substring(j, i))) { // j to i-1.   {0  .... j ..... i-1} //-------O(k)
                     dp[i] = true;
+                    break;
                 }
             }
         }

@@ -32,7 +32,7 @@ public class SudokuSolver {
                         if(isValid(board,i,j,c)){
                             board[i][j] = c; //Put c for this cell
 
-                            if(solve(board) == true){ //If it's the solution return true
+                            if(solve(board)){ //If it's the solution return true
                                 return true;
                             }else{
                                 board[i][j] = '.'; //Otherwise go back

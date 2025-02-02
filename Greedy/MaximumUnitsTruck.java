@@ -1,9 +1,6 @@
 package Greedy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 /*
 https://leetcode.com/problems/maximum-units-on-a-truck/
@@ -60,7 +57,7 @@ public class MaximumUnitsTruck {
         int maxUnits = 0;
         ArrayList<BoxCategory> boxCatList = new ArrayList<BoxCategory>();
         for(int[] boxType : boxTypes){
-            boxCatList.addAll(Arrays.asList(new BoxCategory(boxType[0],boxType[1])));
+            boxCatList.addAll(List.of(new BoxCategory(boxType[0], boxType[1])));
         }
 
         Collections.sort(boxCatList,new Comparator<BoxCategory>(){

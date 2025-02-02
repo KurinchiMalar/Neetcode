@@ -34,7 +34,7 @@ Sort:
  class MaxProductPair {
     // Function to find maximum product pair
     // in arr[0..n-1]
-    static int[] maxProduct(int arr[], int n)
+    static int[] maxProduct(int[] arr, int n)
     {
         int[] result = new int[2];
         if (n < 2)
@@ -108,7 +108,7 @@ Sort:
     /* Driver program to test above function */
     public static void main(String[] args)
     {
-        int arr[] =  {-1, -3, -4, 2, 0, -5} ;
+        int[] arr =  {-1, -3, -4, 2, 0, -5} ;
         int n = arr.length;
         System.out.println(Arrays.toString(maxProduct(arr, n)));
 

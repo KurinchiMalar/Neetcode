@@ -54,8 +54,7 @@ public class A30_MinimumWindowSubString {
                 if(curMap.get(ch) == 0) curMap.remove(ch);
             }
         }
-        if(curMap.isEmpty())return true;
-        return false;
+        return curMap.isEmpty();
     }
     public String minWindow_BruteForce(String s, String t) {
         if(s == null || s.isEmpty()) return "";

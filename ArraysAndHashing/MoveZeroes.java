@@ -47,7 +47,6 @@ public class MoveZeroes {
             nums[start] = 0;
             start++;
         }
-        return ;
     }
     public static void main(String[] args){
         MoveZeroes ob = new MoveZeroes();
