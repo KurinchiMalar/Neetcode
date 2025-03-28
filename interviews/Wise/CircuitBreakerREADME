@@ -1,0 +1,81 @@
+Implement Web Client to handle API requests
+Kurinchi Malar
+Louis Steimberg
+Implement Web Client to handle API requests
+Description
+Question
+Let's assume we have a web service, called Service A, which handles API requests. Each time an API request is sent to Service A, it makes a request to 2 other services:
+Service B
+Service C
+If one of Service B or C has a problem, and we keep making API requests to them, it would create extra pressure on the failing service which would only make the problem worse.
+Ideally if we encounter too many failures under a certain period of time, we should block making requests to give time for the service to recover.
+To fix the problem we want you to implement a version of a Web API client that:
+When a number of failures happen, we stop making API requests to that service for a while.
+For this problem, we should stop calling a Service if we get 3 failures (e.g: Internal Server Error, Timeout) in last 10 minutes, but after 5 minutes we want to open the calls again to the service.
+Example scenario request being made to Service to B and Service C:
+
+Request time    Service / API    Response (status)
+12:01 AM    GET Service B    Success (200)
+12:02 AM    GET Service B    Failed (500)
+12:03 AM    GET Service B    Failed (500)
+12:04 AM    GET Service B    Failed (500)
+12:05 AM    GET Service B    Blocked -
+(not making request to Service B)
+12:07 AM    POST Service C    Success (200)
+12:09 AM    GET Service B    Blocked -
+(not making request to Service B)
+12:10 AM    GET Service B    Success (200)
+Testing
+You can test your code with sample input that follows the format below:
+The first line of the input is the number N of requests to make throughout the test
+The next N lines should are a comma separated with four items in the order of:
+Time in minutes at which the request is made
+Host of the service called
+Actual API response status code from the service
+Sample input format:
+3
+1,service_b/api,200
+2,service_b/api,200
+3,service_b/api,500
+Here,
+First line : 3 lines of test values are in this execution
+Second line : Request fired at 1st min to service_b/api host and the API response is 200
+Third line : Request fired at 2nd min to service_b/api host and the API response is 200
+Fourth line : Request fired at 3rd min to service_b/api host and the API response is 500
+
+=====================================================================================================
+
+Given skeleton code:
+/ You don't need to make any changes for this class
+abstract class Request {
+  String host;
+  abstract Response call(); // This makes request to external server
+}
+// You don't need to make any changes for this class
+class Response {
+  int status;
+  String body;
+}
+/*
+ * This class will be used multiple times to make API requests to different services.
+ * Example :
+ *  Request requestToServiceB = buildRequest("service-b.com");
+ *  Response responseFromServiceB = webClient.execute(requestToServiceB);
+ *
+ *  Request requestToServiceC = buildRequest("service-c.com");
+ *  Response responseFromServiceC = webClient.execute(requestToServiceC);
+*/
+class WebClient {
+     public Response execute(Request request) throws Exception {
+        // You have to implement the solution by replacing the next line which makes request to external APIs
+
+        if(!canMakeRequest(request)){
+            // throw exception
+
+            recordError();
+        }
+
+        return request.call();
+    }
+
+}
